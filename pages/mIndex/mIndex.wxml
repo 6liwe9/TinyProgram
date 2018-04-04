@@ -1,0 +1,4 @@
+<import src='../template/tabbar/tabbar.wxml'/>
+<view>
+<template is='tabbar' data='{{...barData}}'/>
+</view>

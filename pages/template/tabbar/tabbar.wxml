@@ -1,0 +1,12 @@
+<template name="tabbar">
+<view class ='tabBar'>
+ <block wx:for="{{bar}}"> 
+   <navigator url='{{item.barUrl}}'>
+    <view class ='itemClass'>
+     <image class='image' src='{{item.image}}'></image> 
+      <text>{{item.text}}</text>
+    </view>
+  </navigator>
+ </block>   
+</view>
+</template>

@@ -1,0 +1,11 @@
+<!--index.wxml-->
+<view class="container" style="background-image: url('{{imageUrl}}');background-size:100% 100%"  >
+  <view class="userinfo" animation="{{animationData}}">
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo"     bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    <block wx:else>
+      <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+      <button wx:if="{{isBtn}}" type='default' bindtap='bindViewTap' size='mini' class='button'>进入蜜窝</button>
+    </block>
+  </view>
+</view>

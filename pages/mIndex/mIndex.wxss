@@ -1,0 +1,2 @@
+/* pages/mIndex/mIndex.wxss */
+@import '../template/tabbar/tabbar.wxss'

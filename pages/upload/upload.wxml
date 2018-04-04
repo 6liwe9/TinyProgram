@@ -1,0 +1,8 @@
+<import src='../template/tabbar/tabbar.wxml'/>
+<view>
+<template is='tabbar' data='{{...barData}}'/>
+</view>
+<view class="container">
+    <button bindtap='uploadPic'> 1232</button>
+   <text>{{imageData}}</text>
+</view>

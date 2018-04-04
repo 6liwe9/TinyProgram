@@ -1,0 +1,2 @@
+/* pages/upload/upload.wxss */
+@import '../template/tabbar/tabbar.wxss'
