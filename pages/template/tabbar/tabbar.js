@@ -11,8 +11,8 @@ var content_for = {
         image: '../icons/2.png'
   },
   {
-    barUrl: '../index/index',
-    text: '帮助',
+    barUrl: '../inheritance/inheritance',
+    text: '遗传',
     image: '../icons/3.png'
   },
  

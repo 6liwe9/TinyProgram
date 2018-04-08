@@ -3,7 +3,8 @@
     "pages/index/index",
     "pages/logs/logs",
     "pages/upload/upload",
-    "pages/mIndex/mIndex"
+    "pages/mIndex/mIndex",
+    "pages/inheritance/inheritance"
   ],
   "window": {
     "backgroundTextStyle": "light",

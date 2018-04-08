@@ -19,7 +19,7 @@ Page({
   onLoad: function () {
     var p = this;
     wx.request({
-      url: 'http://localhost/springmvc/hello/wx_cover.do', 
+      url: 'http://114.116.9.92/springmvc/hello/wx_cover.do', 
       data: {
       },
       method: "GET",

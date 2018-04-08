@@ -34,7 +34,7 @@ Page({
         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
         var tempFilePaths = res.tempFilePaths;
         wx.uploadFile({
-          url: 'http://localhost/springmvc/hello/wx_upload.do', //
+          url: 'http://114.116.9.92/springmvc/hello/wx_upload.do', //
           filePath: tempFilePaths[0],
           name: 'file',
           header: {

@@ -1,0 +1,45 @@
+/* pages/inheritance/inheritance.wxss */
+@import '../template/tabbar/tabbar.wxss';
+.all{
+  display: flex;
+  justify-content:space-between; /*样式修改在这里*/
+  flex-direction: column;
+}
+.view{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+ justify-content:center;
+   flex-wrap: wrap
+}
+.con{
+    display: flex;
+  justify-content:center; /*样式修改在这里*/
+  flex-direction: column;
+  align-items:center;
+}
+.imageP{
+  width:200rpx;
+  height: 200rpx;
+}
+.btnClass{
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+   flex-wrap: wrap
+} 
+.btnClassNotSeen{
+  display: none;
+} 
+.heart{
+  display:flex;
+  flex-direction:row;
+  flex-wrap:wrap;
+  justify-content:center;
+}
+.textClass{
+   display:flex;
+  flex-direction:row;
+  flex-wrap:wrap;
+  justify-content:center;
+}

@@ -1,0 +1,37 @@
+<!--pages/inheritance/inheritance.wxml-->
+<import src='../template/tabbar/tabbar.wxml'/>
+<view class='all'>
+  <view class='view'> 
+    <view class='con' bindtap='showMType'>
+      <image class='imageP' src='../icons/2.png'></image>
+      <text>{{motherText}}</text>
+    </view>
+    <view class='con' bindtap='showFType'> 
+      <image class='imageP' src='../icons/4.png'></image>
+      <text>{{fatherText}}</text>
+    </view> 
+    <view class="btnClass{{showViewF?'':'NotSeen'}}">
+      <block wx:for="{{typeData}}" wx:for-index="index" wx:for-item="item">
+        <button bindtap='setTypeF' class='btn' data-type='{{item}}'> {{item}}   </button>
+      </block>   
+    </view>
+    <view class="btnClass{{showViewM?'':'NotSeen'}}">
+      <block wx:for="{{typeData}}" wx:for-index="index" wx:for-item="item" >
+        <button bindtap='setTypeM' class='btn' data-type='{{item}}'> {{item}}</button>
+      </block>   
+    </view>
+  </view>
+    <view class='heart' animation="{{animationData}}" bindtap='addAnimation'> 
+      <image class='imageP' src='../icons/heart.png'>
+      </image>
+    </view> 
+<view class="textClass">
+  <scroll-view scroll-y="true" style="height: 250px ;width:80%; ">
+    <text>{{text}}</text>
+  </scroll-view>
+</view>
+<button bindtap='addMine'>添加我的蜜</button>
+</view>
+<view>
+  <template is='tabbar' data='{{...barData}}'/>
+</view>
