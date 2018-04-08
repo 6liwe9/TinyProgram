@@ -1,0 +1,30 @@
+<!--pages/inheritance/myMi.wxml-->
+<view class='view'> 
+    <view class='con' bindtap='showMType'>
+      <image class='imageP' src='../icons/2.png'></image>
+      <text>{{motherText}}</text>
+    </view>
+    <view class='con' bindtap='showFType'> 
+      <image class='imageP' src='../icons/4.png'></image>
+      <text>{{fatherText}}</text>
+    </view> 
+    <view class="btnClass{{showViewF?'':'NotSeen'}}">
+      <block wx:for="{{typeData}}" wx:for-index="index" wx:for-item="item">
+        <button bindtap='setTypeF' class='btn' data-type='{{item}}'> {{item}}   </button>
+      </block>   
+    </view>
+    <view class="btnClass{{showViewM?'':'NotSeen'}}">
+      <block wx:for="{{typeData}}" wx:for-index="index" wx:for-item="item" >
+        <button bindtap='setTypeM' class='btn' data-type='{{item}}'> {{item}}</button>
+      </block>   
+    </view>
+  
+<checkbox-group bindchange="listenCheckboxChange">
+<!--这里用label显示内容，for循环写法 wx:for-items 默认item为每一项-->
+    <label   wx:for="{{typeData}}" wx:for-index="index" wx:for-item="item" >
+    <!--value值和默认选中状态都是通过数据绑定在js中的-->
+        <checkbox value="{{item}}" />{{item}}
+    </label>
+</checkbox-group>
+<button bindtap='save'> 保存</button>
+</view>

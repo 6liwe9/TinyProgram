@@ -35,7 +35,7 @@ Page({
   },
   addMine: function () {
     wx.navigateTo({
-      url: '../mIndex/mIndex'
+      url: './myMi'
     })
   },
   /**

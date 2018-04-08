@@ -4,7 +4,8 @@
     "pages/logs/logs",
     "pages/upload/upload",
     "pages/mIndex/mIndex",
-    "pages/inheritance/inheritance"
+    "pages/inheritance/inheritance",
+    "pages/inheritance/myMi"
   ],
   "window": {
     "backgroundTextStyle": "light",
