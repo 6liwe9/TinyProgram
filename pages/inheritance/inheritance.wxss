@@ -6,11 +6,13 @@
   flex-direction: column;
 }
 .view{
-  width: 100%;
   display: flex;
   flex-direction: row;
  justify-content:center;
-   flex-wrap: wrap
+   flex-wrap: wrap;
+   background-color: lightpink;
+   border-radius: 30rpx;
+   margin: 20rpx;
 }
 .con{
     display: flex;
@@ -26,11 +28,19 @@
   display: flex;
   width: 100%;
   flex-direction: row;
-   flex-wrap: wrap
+  justify-content:flex-start;
+  flex-wrap: wrap;
+  border-radius: 10rpx;
+  margin: 20rpx;
+  padding: 10rpx;
 } 
 .btnClassNotSeen{
   display: none;
 } 
+.btn{
+  margin: 5rpx;
+
+}
 .heart{
   display:flex;
   flex-direction:row;
@@ -42,4 +52,8 @@
   flex-direction:row;
   flex-wrap:wrap;
   justify-content:center;
+  background-color: lightblue;
+  border-radius: 10rpx;
+  margin: 20rpx;
+  padding: 10rpx;
 }

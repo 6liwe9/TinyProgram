@@ -1,7 +1,7 @@
 var content_for = {
   bar:[
   {
-    barUrl: '../index/index',
+    barUrl: '../mIndex/mIndex',
     text: '主页',
     image: '../icons/1.png'
   },

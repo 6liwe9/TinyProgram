@@ -1,4 +1,5 @@
 <!--pages/inheritance/myMi.wxml-->
+<import src='../template/tabbar/tabbar.wxml'/>
 <view class='view'> 
     <view class='con' bindtap='showMType'>
       <image class='imageP' src='../icons/2.png'></image>
@@ -18,13 +19,24 @@
         <button bindtap='setTypeM' class='btn' data-type='{{item}}'> {{item}}</button>
       </block>   
     </view>
-  
-<checkbox-group bindchange="listenCheckboxChange">
+  </view>
+<view class='below'>
+  <view class='con'> 
+      <image class='imageP' src='../icons/3.png'>
+      </image>
+      <text>子</text>
+    </view> 
+<view class='group'>
+<checkbox-group bindchange="listenCheckboxChange" style="display:flex;">
 <!--这里用label显示内容，for循环写法 wx:for-items 默认item为每一项-->
     <label   wx:for="{{typeData}}" wx:for-index="index" wx:for-item="item" >
     <!--value值和默认选中状态都是通过数据绑定在js中的-->
-        <checkbox value="{{item}}" />{{item}}
+        <checkbox value="{{item}}" style="margin:5rpx" />{{item}}
     </label>
 </checkbox-group>
+</view>
 <button bindtap='save'> 保存</button>
+</view>
+<view>
+  <template is='tabbar' data='{{...barData}}'/>
 </view>

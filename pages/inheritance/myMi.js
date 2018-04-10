@@ -1,5 +1,6 @@
 // pages/inheritance/myMi.js
 var content_data = require('./type.js')
+var content_data2 = require('../template/tabbar/tabbar.js')
 Page({
 
   /**
@@ -31,10 +32,16 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      typeData: content_data.typeData
+      typeData: content_data.typeData,
+      barData: content_data2.tabBarData
     });
   },
-
+  save:function(){
+    wx.showToast({
+      title: '保存成功',
+      duration: 1000
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

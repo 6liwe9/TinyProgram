@@ -45,6 +45,7 @@ Page({
   
   },
   addAnimation: function () {
+    
     var animation = wx.createAnimation({
       duration: 1000,
       timingFunction: "ease-in",
@@ -57,6 +58,9 @@ Page({
         animation.opacity(1).scale(1, 1).step();
         this.setData({
           animationData: animation.export()
+        })
+        this.setData({
+          text: '原色：60%，马赛克40%'
         })
       }.bind(this), 1000)
    
