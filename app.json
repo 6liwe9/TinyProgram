@@ -5,7 +5,11 @@
     "pages/upload/upload",
     "pages/mIndex/mIndex",
     "pages/inheritance/inheritance",
-    "pages/inheritance/myMi"
+    "pages/inheritance/myMi",
+    "pages/buy/buy",
+    "pages/buy/buydetail",
+    "pages/takeaway/takeaway",
+    "pages/takeaway/addmine"
   ],
   "window": {
     "backgroundTextStyle": "light",

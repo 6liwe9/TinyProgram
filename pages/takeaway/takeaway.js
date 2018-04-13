@@ -1,20 +1,33 @@
-// pages/mIndex/mIndex.js
-var content_data = require('../template/tabbar/tabbar.js')
+// pages/takeaway/takeaway.js
+var content_data = require('../inheritance/type.js')
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    pics: {
-      pics: [{ url: '../icons/1.png' }, { url: '../icons/2.png'}]}
+    index: 0
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({ barData: content_data.tabBarData});
+    var typearray=content_data.typeData;
+    typearray.unshift('所有类型');
+    this.setData({
+      array:typearray
+      })
+  },
+  listenerPickerSelected:function(e){
+    this.setData({
+      index: e.detail.value
+    });
+  },
+  addMine:function(){
+    wx.navigateTo({
+      url: './addmine'　　// 页面 A
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

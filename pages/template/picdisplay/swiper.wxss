@@ -1,0 +1,11 @@
+.swiperClass{
+  border-radius: 30rpx;
+  margin: 20rpx;
+}
+.swiper {
+  width: 100%;
+}
+.swiper image {
+  height: 100%;
+  width: 100%;
+}

@@ -1,0 +1,2 @@
+<!--pages/buy/buydetail.wxml-->
+<text>pages/buy/buydetail.wxml{{title}}</text>

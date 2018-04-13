@@ -1,21 +1,22 @@
-// pages/mIndex/mIndex.js
-var content_data = require('../template/tabbar/tabbar.js')
+// pages/buy/buydetail.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    pics: {
-      pics: [{ url: '../icons/1.png' }, { url: '../icons/2.png'}]}
+  
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({ barData: content_data.tabBarData});
+    this.setData({
+      title: options.title
+    })    
   },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

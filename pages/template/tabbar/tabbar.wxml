@@ -4,7 +4,7 @@
    <navigator url='{{item.barUrl}}'>
     <view class ='itemClass'>
      <image class='image' src='{{item.image}}'></image> 
-      <text>{{item.text}}</text>
+      <text class='textclass'>{{item.text}}</text>
     </view>
   </navigator>
  </block>   

@@ -1,8 +1,11 @@
 <import src='../template/tabbar/tabbar.wxml'/>
+<import src='../template/picdisplay/swiper.wxml'/>
 <view style="background-color:white;height:200rpx;margin:20rpx;padding:20rpx;border-radius:20rpx;">
 <text>主页</text>
 </view>
-<view style="background-color:white;height:50rpx;margin:20rpx;padding:20rpx"></view>
+<view style="background-color:white;margin:20rpx;padding:20rpx;border-radius:20rpx;">
+<template is='swiperTemplate' data='{{...pics}}'/>
+</view>
 <view>
 <template is='tabbar' data='{{...barData}}'/>
 </view>

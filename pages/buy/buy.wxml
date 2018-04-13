@@ -1,0 +1,47 @@
+<import src='../template/picdisplay/swiper.wxml'/>
+<scroll-view scroll-y="true" style="height: 100%">
+<view class='itemClass'>
+  <navigator url="./buydetail?title=123" >
+    <text>澳大利亚原粉</text>
+    <view class='line'></view>
+      <template is='swiperTemplate' data='{{...pics}}'/>
+    <view class='line'></view>
+    <view class='textView'>
+      <text class='textFont'>澳大利亚代购，原粉只要880，赶快点击关注</text>
+    </view>
+  </navigator>
+</view>
+<view class='itemClass'>
+  <navigator url="./buydetail?title=123" >
+    <text>自制蜜粮</text>
+    <view class='line'></view>
+      <template is='swiperTemplate' data='{{...pics}}'/>
+    <view class='line'></view>
+    <view class='textView'>
+      <text class='textFont'>自制蜜粮，优质奶粉+水果粉+米粉+原粉+燕麦粉，赶快点击关注</text>
+    </view>
+  </navigator>
+</view>
+<view class='itemClass'>
+  <navigator url="./buydetail?title=123" >
+    <text>澳大利亚原粉</text>
+    <view class='line'></view>
+      <template is='swiperTemplate' data='{{...pics}}'/>
+    <view class='line'></view>
+    <view class='textView'>
+      <text class='textFont'>澳大利亚代购，原粉只要880，赶快点击关注</text>
+    </view>
+  </navigator>
+</view>
+<view class='itemClass'>
+  <navigator url="./buydetail?title=123" >
+    <text>小蜜</text>
+    <view class='line'></view>
+      <template is='swiperTemplate' data='{{...pics}}'/>
+    <view class='line'></view>
+    <view class='textView'>
+      <text class='textFont'>澳大利亚代购，原粉只要880，赶快点击关注</text>
+    </view>
+  </navigator>
+</view>
+</scroll-view>

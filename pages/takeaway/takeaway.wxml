@@ -1,0 +1,9 @@
+<!--pages/takeaway/takeaway.wxml-->
+<picker mode="selector" range="{{array}}" value="{{index}}" bindchange="listenerPickerSelected">
+  <view class='selector'>
+    <text>{{array[index]}}</text>
+  </view>
+</picker>
+<view class='btn' bindtap='addMine'>
+    <text>给我家的蜜找主人</text>
+</view>

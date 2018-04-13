@@ -6,8 +6,8 @@ var content_for = {
     image: '../icons/1.png'
   },
   {
-    barUrl: '../index/index',
-        text: '帮助',
+    barUrl: '../takeaway/takeaway',
+        text: '带走',
         image: '../icons/2.png'
   },
   {
@@ -20,6 +20,18 @@ var content_for = {
     barUrl: '../upload/upload',
     text: '上传',
     image: '../icons/4.png'
+  }
+  ,
+  {
+    barUrl: '../buy/buy',
+    text: '淘货',
+    image: '../icons/2.png'
+  }
+    ,
+  {
+    barUrl: '../upload/upload',
+    text: '我的',
+    image: '../icons/1.png'
   }
   ]
 }
