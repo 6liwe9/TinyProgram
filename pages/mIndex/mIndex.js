@@ -7,7 +7,7 @@ Page({
    */
   data: {
     pics: {
-      pics: [{ url: '../icons/1.png' }, { url: '../icons/2.png'}]}
+      pics: [{ url: 'http://114.116.9.92/springmvc/wximages/test1.jpg' }, { url: '/pages/icons/2.png'}]}
   },
 
   /**
@@ -22,7 +22,17 @@ Page({
   onReady: function () {
   
   },
-
+  abc:function(e){
+    wx.previewImage({
+      urls: [e.target.dataset.pic],
+      fail: function () {
+        console.log('fail')
+      },
+      complete: function () {
+        console.info("点击图片了");
+      },
+    })
+  },
   /**
    * 生命周期函数--监听页面显示
    */

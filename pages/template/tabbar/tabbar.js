@@ -18,7 +18,7 @@ var content_for = {
  
   {
     barUrl: '../upload/upload',
-    text: '上传',
+    text: '蜜图',
     image: '../icons/4.png'
   }
   ,

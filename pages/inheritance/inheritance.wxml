@@ -12,12 +12,12 @@
     </view> 
     <view class="btnClass{{showViewF?'':'NotSeen'}}">
       <block wx:for="{{typeData}}" wx:for-index="index" wx:for-item="item">
-        <button bindtap='setTypeF' class='btn' data-type='{{item}}'> {{item}}   </button>
+        <view bindtap='setTypeF' class='btn' data-type='{{item}}'> {{item}}   </view>
       </block>   
     </view>
     <view class="btnClass{{showViewM?'':'NotSeen'}}">
       <block wx:for="{{typeData}}" wx:for-index="index" wx:for-item="item" >
-        <button bindtap='setTypeM' class='btn' data-type='{{item}}'> {{item}}</button>
+        <view bindtap='setTypeM' class='btn' data-type='{{item}}'> {{item}}</view>
       </block>   
     </view>
   </view>

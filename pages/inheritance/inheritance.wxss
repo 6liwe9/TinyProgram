@@ -13,9 +13,10 @@
    background-color: lightpink;
    border-radius: 30rpx;
    margin: 20rpx;
+   padding: 10rpx;
 }
 .con{
-    display: flex;
+  display: flex;
   justify-content:center; /*样式修改在这里*/
   flex-direction: column;
   align-items:center;
@@ -38,8 +39,10 @@
   display: none;
 } 
 .btn{
-  margin: 5rpx;
-
+  margin: 10rpx;
+  border-radius: 30rpx;
+  background-color: white;
+  padding: 10rpx;
 }
 .heart{
   display:flex;

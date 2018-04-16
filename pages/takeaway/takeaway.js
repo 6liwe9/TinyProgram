@@ -6,14 +6,17 @@ Page({
    * 页面的初始数据
    */
   data: {
-    index: 0
+    index: 0,
+    pics: {
+      pics: [{ url: '../icons/1.png' }, { url: '../icons/2.png' }]
+    }
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var typearray=content_data.typeData;
+    var typearray=content_data.typeData.slice(0);
     typearray.unshift('所有类型');
     this.setData({
       array:typearray

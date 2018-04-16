@@ -1,2 +1,31 @@
-<!--pages/takeaway/addmine.wxml-->
-<text>pages/takeaway/addmine.wxml</text>
+<view class='all'>
+<block wx:if="{{!hasPic}}">
+  <image class='image' bindtap='uploadPics' src='../icons/icon_add.png'></image>
+  </block>
+  <block wx:else>
+  <view class='swiperview'>
+  <swiper class="swiper" indicator-dots="true" autoplay="true" interval="5000" duration="1000">    
+      <block wx:for="{{pics}}" wx:for-index="index">    
+        <swiper-item>    
+          <image src="{{item}}" bindtap='viewPic' class="slide-image" mode="aspectFill" data-pic='{{item}}'/>    
+        </swiper-item>    
+      </block>    
+    </swiper> 
+      <image src="../icons/delete.png" style='width:60rpx;   height:60rpx;position:fixed;top:0;right:0' bindtap='delete'></image>
+    </view> 
+  </block>
+</view>
+<picker mode="selector" range="{{arr}}" value="{{index}}" bindchange="listenerPickerSelected">
+  <view class='selector'>
+    <text>{{arr[index]}}</text>
+  </view>
+</picker>
+<view class='textview'>
+  <input class="input" placeholder="标题"
+    bindinput ="inputTitle"maxlength='100'/>
+  <view class="line"></view>
+  <textarea bindblur="bindTextAreaBlur" auto-height placeholder="详细描述"/>
+</view>
+<view class='selector' bindtap='save'>
+  <text>保存</text>
+</view>
