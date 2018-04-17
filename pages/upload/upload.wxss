@@ -1,2 +1,5 @@
 /* pages/upload/upload.wxss */
-@import '../template/tabbar/tabbar.wxss'
+@import '../template/tabbar/tabbar.wxss';
+page{
+  background-color:rgb(240,240,240);
+}

@@ -1,0 +1,54 @@
+/* pages/article/article.wxss */
+page{
+  background-color:rgb(240,240,240);
+}
+.titleCls{
+  border-top-left-radius: 20rpx;
+  border-top-right-radius: 20rpx;
+  background-color:white;
+  padding: 20rpx;
+  margin-top: 20rpx;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+  margin-bottom: 10rpx;
+  display: flex;  
+  flex-direction: row;  
+  justify-content: center; 
+}
+.titleFont{
+  font-weight: 900;
+  font-family: "黑体";
+  font-size: 60rpx;
+}
+.contentFont{
+  font-size: 30rpx;
+  color:black;
+}
+.contentCls{
+  border-bottom-left-radius: 20rpx;
+  border-bottom-right-radius: 20rpx;
+  background-color:white;
+  padding: 20rpx;
+  margin-top: 10rpx;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+  margin-bottom: 20rpx;
+   display: flex;  
+  flex-direction: row;  
+  justify-content: center; 
+}
+.picsCls{
+  border-radius: 20rpx;
+  background-color: white;
+  margin: 20rpx;
+  padding: 20rpx;
+  display: flex;  
+  flex-direction: column;  
+  align-content: center; 
+  flex-wrap: nowrap;
+  
+}
+.image{
+  width:100%;
+  margin: 10rpx;
+}

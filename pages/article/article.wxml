@@ -1,0 +1,12 @@
+<!--pages/article/article.wxml-->
+<view class='titleCls'>
+  <text class='titleFont'>{{Title}}</text>
+</view>
+  <view class="contentCls">
+<text class='contentFont'>{{Content}}</text>
+</view>
+<view class="picsCls">
+  <block wx:for="{{Pics}}" wx:for-index="index">    
+    <image src="{{item}}" bindtap='viewPic' class="image" mode="aspectFill" data-pic='{{item}}'/>      
+  </block>    
+</view>

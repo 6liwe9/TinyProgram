@@ -1,5 +1,8 @@
 /* pages/inheritance/inheritance.wxss */
 @import '../template/tabbar/tabbar.wxss';
+page{
+  background-color:rgb(240,240,240);
+}
 .all{
   display: flex;
   justify-content:space-between; /*样式修改在这里*/

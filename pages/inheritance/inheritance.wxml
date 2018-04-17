@@ -35,6 +35,3 @@
 </view>
 <button bindtap='addMine'>共享我的蜜信息</button>
 </view>
-<view>
-  <template is='tabbar' data='{{...barData}}'/>
-</view>

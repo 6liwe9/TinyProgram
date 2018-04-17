@@ -7,9 +7,10 @@
     "pages/inheritance/inheritance",
     "pages/inheritance/myMi",
     "pages/buy/buy",
-    "pages/buy/buydetail",
     "pages/takeaway/takeaway",
-    "pages/takeaway/addmine"
+    "pages/takeaway/addmine",
+    "pages/article/article",
+    "pages/cover/cover"
   ],
   "window": {
     "backgroundTextStyle": "light",

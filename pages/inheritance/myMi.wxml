@@ -35,8 +35,5 @@
     </label>
 </checkbox-group>
 </view>
-<button bindtap='save'> 保存</button>
-</view>
-<view>
-  <template is='tabbar' data='{{...barData}}'/>
+  <button bindtap='save'> 保存</button>
 </view>

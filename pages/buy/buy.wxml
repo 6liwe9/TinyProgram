@@ -1,7 +1,7 @@
 <import src='../template/picdisplay/swiper.wxml'/>
 <scroll-view scroll-y="true" style="height: 100%">
 <view class='itemClass'>
-  <navigator url="./buydetail?title=123" >
+  <navigator url="../article/article?articleId=123" >
     <text>澳大利亚原粉</text>
     <view class='line'></view>
       <template is='swiperTemplate' data='{{...pics}}'/>
@@ -12,7 +12,7 @@
   </navigator>
 </view>
 <view class='itemClass'>
-  <navigator url="./buydetail?title=123" >
+  <navigator url="../article/article?articleId=123" >
     <text>自制蜜粮</text>
     <view class='line'></view>
       <template is='swiperTemplate' data='{{...pics}}'/>
@@ -23,7 +23,7 @@
   </navigator>
 </view>
 <view class='itemClass'>
-  <navigator url="./buydetail?title=123" >
+  <navigator url="../article/article?articleId=123" >
     <text>澳大利亚原粉</text>
     <view class='line'></view>
       <template is='swiperTemplate' data='{{...pics}}'/>
@@ -34,7 +34,7 @@
   </navigator>
 </view>
 <view class='itemClass'>
-  <navigator url="./buydetail?title=123" >
+  <navigator url="../article/article?articleId=123" >
     <text>小蜜</text>
     <view class='line'></view>
       <template is='swiperTemplate' data='{{...pics}}'/>

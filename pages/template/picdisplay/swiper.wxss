@@ -1,7 +1,3 @@
-.swiperClass{
-  border-radius: 30rpx;
-  margin: 20rpx;
-}
 .swiper {
   width: 100%;
 }

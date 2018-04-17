@@ -1,16 +1,16 @@
 <!--pages/takeaway/takeaway.wxml-->
 <import src='../template/picdisplay/swiper.wxml'/>
+<view class='btn' bindtap='addMine'>
+    <text>找主人</text>
+</view>
 <picker mode="selector" range="{{array}}" value="{{index}}" bindchange="listenerPickerSelected">
   <view class='selector'>
     <text>{{array[index]}}</text>
   </view>
 </picker>
-<view class='btn' bindtap='addMine'>
-    <text>给我家的蜜找主人</text>
-</view>
 <scroll-view scroll-y="true" style="height: 100%">
 <view class='itemClass'>
-  <navigator url="./buydetail?title=123" >
+  <navigator url="../article/article?articleId=123" >
     <text>玩家原色</text>
     <view class='line'></view>
       <template is='swiperTemplate' data='{{...pics}}'/>
@@ -21,7 +21,7 @@
   </navigator>
 </view>
 <view class='itemClass'>
-  <navigator url="./buydetail?title=123" >
+ <navigator url="../article/article?articleId=123" >
     <text>出袋三月的白金马赛克</text>
     <view class='line'></view>
       <template is='swiperTemplate' data='{{...pics}}'/>

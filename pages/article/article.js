@@ -1,24 +1,34 @@
-// pages/mIndex/mIndex.js
-var content_data = require('../template/tabbar/tabbar.js')
+// pages/article/article.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    msgList: [
-      { id: "123", title: "公告：多地首套房贷利率上浮 热点城市渐迎零折扣时代" },
-       { id: "123", title: "公告：悦如公寓三周年生日趴邀你免费吃喝欢唱" },
-       { id: "123", title: "公告：你想和一群有志青年一起过生日嘛？" }],
-    pics: {
-      pics: [{ url: 'http://114.116.9.92/springmvc/wximages/test1.jpg' }, { url: '/pages/icons/2.png'}]}
+    Title:"测试文章",
+    Content:"文章需要三个部分，标题，内容，和图片列表，可以用作商品详细页展示，小蜜详情展示",
+    Pics: ['../icons/1.png','../icons/2.png']
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({ barData: content_data.tabBarData});
+      this.setData({
+        title: options.articleId
+      })
+  },
+  viewPic:function(e){
+    wx.previewImage({
+      current: e.target.dataset.pic,
+      urls: this.data.Pics,
+      fail: function () {
+        console.log('fail')
+      },
+      complete: function () {
+        console.info("点击图片了");
+      }
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -26,6 +36,7 @@ Page({
   onReady: function () {
   
   },
+
   /**
    * 生命周期函数--监听页面显示
    */

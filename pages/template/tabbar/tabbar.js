@@ -1,27 +1,26 @@
 var content_for = {
   bar:[
   {
-    barUrl: '../mIndex/mIndex',
-    text: '主页',
+    barUrl: '../cover/cover',
+    text: '封面',
     image: '../icons/1.png'
   },
-  {
-    barUrl: '../takeaway/takeaway',
-        text: '带走',
-        image: '../icons/2.png'
-  },
-  {
-    barUrl: '../inheritance/inheritance',
-    text: '遗传',
-    image: '../icons/3.png'
-  },
- 
   {
     barUrl: '../upload/upload',
     text: '蜜图',
     image: '../icons/4.png'
   }
   ,
+  {
+    barUrl: '../inheritance/inheritance',
+    text: '遗传',
+    image: '../icons/3.png'
+  },
+  {
+    barUrl: '../takeaway/takeaway',
+    text: '带走',
+    image: '../icons/2.png'
+  },
   {
     barUrl: '../buy/buy',
     text: '淘货',
