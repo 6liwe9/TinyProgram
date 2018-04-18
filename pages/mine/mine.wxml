@@ -27,3 +27,4 @@
       </view>
   </block>    
 </view>
+<navigator class='advice' url='./advice'>建议与反馈</navigator>

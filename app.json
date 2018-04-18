@@ -11,7 +11,8 @@
     "pages/takeaway/addmine",
     "pages/article/article",
     "pages/cover/cover",
-    "pages/mine/mine"
+    "pages/mine/mine",
+    "pages/mine/advice"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -1,0 +1,26 @@
+/* pages/mine/advice.wxss */
+page{
+  background-color:rgb(240,240,240);
+}
+.textview{
+  padding: 10rpx;
+  background-color: white;
+  margin: 20rpx;
+  border-radius: 20rpx;
+ 
+}
+.line{
+  background-color:rgb(240,240,240);
+  height: 5rpx;
+  margin: 10rpx;
+}
+.text{
+  height: 400rpx;
+  width: 100%;
+  background-color: rgb(240,240,240)
+}
+.lab{
+  display: flex;
+  justify-content: center;
+  color:grey;
+}

@@ -1,0 +1,11 @@
+<!--pages/mine/advice.wxml-->
+<view class='textview'>
+ <text class='lab'>意见与反馈</text>
+  <view class="line"></view>
+  <textarea bindblur="bindTextAreaBlur" class="text" placeholder="谢谢您的支持!!!"/>
+<view class="line"></view>
+  <view class='lab' bindtap='save'>
+  <text>保存</text>
+</view>
+</view>
+
