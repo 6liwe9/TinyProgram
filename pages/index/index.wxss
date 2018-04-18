@@ -22,3 +22,10 @@ page{
 .button{
   opacity: 0.6;
 }
+.navi{
+  color: white;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  font-size: 30rpx;
+}

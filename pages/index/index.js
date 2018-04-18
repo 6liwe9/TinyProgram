@@ -8,6 +8,7 @@ Page({
     userInfo: {},
     hasUserInfo: false,
     isBtn:true,
+    showNavi:false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     animationData: {}
   },
@@ -78,6 +79,9 @@ Page({
         wx.navigateTo({
         url: '../mIndex/mIndex'
        })
+        this.setData({
+          showNavi: true
+        });
       }.bind(this), 1500)
     }.bind(this), 1000)
   }

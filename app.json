@@ -10,7 +10,8 @@
     "pages/takeaway/takeaway",
     "pages/takeaway/addmine",
     "pages/article/article",
-    "pages/cover/cover"
+    "pages/cover/cover",
+    "pages/mine/mine"
   ],
   "window": {
     "backgroundTextStyle": "light",

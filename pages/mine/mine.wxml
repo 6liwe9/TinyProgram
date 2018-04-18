@@ -1,0 +1,29 @@
+<!--pages/mine/mine.wxml-->
+<view class='userinfo'>
+ <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+</view>
+<text class='textClass'>我的封面</text>
+<view class='contentclas'>
+111111111111111
+</view>
+<text class='textClass'>我的蜜图</text>
+<view class='contentclas'>
+1111111111111111
+</view>
+<text class='textClass'>我发布小蜜带走信息</text>
+<view class='contentclas'>
+  <block wx:for="{{articles}}">    
+  <view class='article'>
+    <navigator url='../article/article?articleId=123' >
+      <text class='title'>{{item.title}}</text>
+      <view class='line'></view>
+      <text class='content'>{{item.content}}</text>
+       <view class='line'></view>
+       </navigator>  
+       <view class='del'>
+         <image src="../icons/delete.png" style='width:50rpx;height:50rpx;' bindtap='delete'data-aid='123'></image>
+       </view>
+      </view>
+  </block>    
+</view>

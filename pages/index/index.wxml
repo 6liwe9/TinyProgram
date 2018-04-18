@@ -8,4 +8,5 @@
       <button wx:if="{{isBtn}}" type='default' bindtap='bindViewTap' size='mini' class='button'>进入蜜窝</button>
     </block>
   </view>
+  <navigator wx:if="{{showNavi}}" class='navi' url='/pages/mIndex/mIndex'>进入首页>>></navigator>
 </view>

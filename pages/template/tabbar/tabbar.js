@@ -28,7 +28,7 @@ var content_for = {
   }
     ,
   {
-    barUrl: '../upload/upload',
+    barUrl: '../mine/mine',
     text: '我的',
     image: '../icons/1.png'
   }
