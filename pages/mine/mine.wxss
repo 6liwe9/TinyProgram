@@ -42,7 +42,7 @@ page{
   margin-right: 10rpx;
 }
 .article{
-  background-color: rgb(240,240,240);
+  background-color: ghostwhite;
   margin: 10rpx;
   border-radius: 20rpx;
   padding: 10rpx;
