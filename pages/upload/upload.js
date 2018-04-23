@@ -43,6 +43,7 @@ Page({
           },
           success: function (res) {
             var a=10;
+            console.log(a);
         }
         })
       }});

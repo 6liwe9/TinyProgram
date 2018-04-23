@@ -12,7 +12,8 @@
     "pages/article/article",
     "pages/cover/cover",
     "pages/mine/mine",
-    "pages/mine/advice"
+    "pages/mine/advice",
+    "pages/pics/picSwitch"
   ],
   "window": {
     "backgroundTextStyle": "light",

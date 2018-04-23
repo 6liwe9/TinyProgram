@@ -1,12 +1,12 @@
 var content_for = {
   bar:[
   {
-    barUrl: '../cover/cover',
+    barUrl: '../upload/upload',
     text: '封面',
     image: '../icons/1.png'
   },
   {
-    barUrl: '../upload/upload',
+    barUrl: '../pics/picSwitch',
     text: '蜜图',
     image: '../icons/4.png'
   }

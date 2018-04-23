@@ -1,0 +1,23 @@
+<!--pages/pics/picSwitch.wxml-->
+<picker mode="selector" range="{{array}}" value="{{index}}" bindchange="listenerPickerSelected">
+  <view class='selector'>
+    <text>{{array[index]}}</text>
+  </view>
+</picker>
+<view class='all'>
+  <swiper indicator-dots='{{auto}}' autoplay="{{auto}}" circular="true" bindchange='change' style='height:800rpx'>    
+        <swiper-item>    
+          <image src="{{pic1}}" bindtap='viewPic' class="slide-image" mode="aspectFill" data-pic='{{pic1}}'/>    
+        </swiper-item>    
+        <swiper-item>    
+          <image src="{{pic2}}" bindtap='viewPic' class="slide-image" mode="aspectFill" data-pic='{{pic2}}'/>    
+        </swiper-item>    
+        <swiper-item>    
+          <image src="{{pic3}}" bindtap='viewPic' class="slide-image" mode="aspectFill" data-pic='{{pic3}}'/>    
+        </swiper-item>       
+  </swiper> 
+    <view class='thumb'>
+      <image animation="{{animate1}}" src='../icons/thumbs-o-down.png' style='height:100rpx;width:100rpx'></image>
+       <image animation="{{animate2}}" src='../icons/thumbs-o-up.png' style='height:100rpx;width:100rpx'></image>
+  </view>
+</view>
