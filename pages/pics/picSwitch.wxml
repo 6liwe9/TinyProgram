@@ -17,7 +17,13 @@
         </swiper-item>       
   </swiper> 
     <view class='thumb'>
-      <image animation="{{animate1}}" src='../icons/thumbs-o-down.png' style='height:100rpx;width:100rpx'></image>
-       <image animation="{{animate2}}" src='../icons/thumbs-o-up.png' style='height:100rpx;width:100rpx'></image>
+      <view class ='cover'>
+        <image animation="{{animate1}}" src='../icons/thumbs-o-down.png' style='height:100rpx;width:100rpx'></image>
+        <text class='number'>{{hate}}</text>
+      </view>
+      <view class='cover'>
+        <image animation="{{animate2}}" src='../icons/thumbs-o-up.png' style='height:100rpx;width:100rpx'></image>
+        <text class='number'>{{like}}</text>
+      </view>
   </view>
 </view>

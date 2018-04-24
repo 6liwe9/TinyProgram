@@ -1,0 +1,47 @@
+/* pages/takeaway/addmine.wxss */
+page{
+  background-color:rgb(240,240,240);
+}
+.all{
+  display: flex;
+  flex-direction: column;
+ align-items:center;
+   margin: 20rpx;
+}
+.image{
+  width: 200rpx;
+  height: 200rpx;
+}
+.selector{
+  background-color:lightpink;
+  border-radius: 20rpx;
+  margin: 20rpx; 
+  padding: 10rpx;
+  display: flex;
+  justify-content:center;
+}
+.swiperview{
+  width: 100%;
+  border-radius: 20rpx;
+  background-color: white;
+  padding: 20rpx;
+}
+.swiper {
+  width: 100%;
+  height: 500rpx;
+}
+.swiper image {
+  height: 100%;
+  width: 100%;
+}
+.line{
+    background-color:rgb(248,248,248);
+  height: 5rpx;
+  margin: 10rpx;
+}
+.textview{
+  border-radius: 20rpx;
+  background-color: white;
+  padding: 20rpx;
+  margin: 20rpx
+}

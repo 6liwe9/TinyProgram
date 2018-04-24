@@ -1,0 +1,73 @@
+/* pages/mine/mine.wxss */
+page{
+  background-color:rgb(240,240,240);
+}
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  border-radius: 20rpx;
+  margin-top: 20rpx;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+}
+.contentclas{
+  background-color: white;
+  border-radius: 20rpx;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+  padding: 10rpx;
+}
+.textClass{
+  margin-left: 30rpx;
+  font-size: 30rpx;
+  color: grey
+}
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: #aaa;
+}
+.line{
+  background-color:white;
+  height: 5rpx;
+ margin-top: 10rpx;
+  margin-left: 10rpx;
+  margin-right: 10rpx;
+}
+.article{
+  background-color: ghostwhite;
+  margin:20rpx;
+  border-radius: 20rpx;
+  padding: 10rpx;
+}
+.title{
+  font-size: 30rpx;
+  color: grey
+}
+.content{
+  font-size: 25rpx;
+  color:gray;
+}
+.del{
+   display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.advice{
+  padding: 10rpx;
+  background-color: white;
+  margin: 20rpx;
+  border-radius: 20rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 35rpx;
+  color: grey;
+}

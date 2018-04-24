@@ -1,16 +1,16 @@
 var content_for = {
   bar:[
   {
-    barUrl: '../upload/upload',
-    text: '封面',
-    image: '../icons/1.png'
-  },
-  {
-    barUrl: '../pics/picSwitch',
+    barUrl: '../pics/picShow',
     text: '蜜图',
     image: '../icons/4.png'
   }
   ,
+  {
+    barUrl: '../other/mine',
+    text: '食谱',
+    image: '../icons/1.png'
+  },
   {
     barUrl: '../inheritance/inheritance',
     text: '遗传',

@@ -15,6 +15,19 @@ Page({
   //事件处理函数
   bindViewTap: function() {
     this.setData({ isBtn: false});
+    var that=app;
+    wx.request({
+      url: 'http://localhost/springmvc/user/user_login.do',
+      data: {
+        openId: that.globalData.openid,
+        nickname: that.globalData.userInfo.nickName,
+        avaterUrl: that.globalData.userInfo.avaterUrl
+      },
+      method: "POST",
+      success: function (res) {
+        console.log(res.data)
+      }
+    })
     this.addAnimation();
   },
   onLoad: function () {

@@ -12,8 +12,11 @@
     "pages/article/article",
     "pages/cover/cover",
     "pages/mine/mine",
+    "pages/other/mine",
     "pages/mine/advice",
-    "pages/pics/picSwitch"
+    "pages/pics/picSwitch",
+    "pages/pics/picShow",
+    "pages/pics/addmine"
   ],
   "window": {
     "backgroundTextStyle": "light",

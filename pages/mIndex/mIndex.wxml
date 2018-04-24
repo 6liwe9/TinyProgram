@@ -15,6 +15,8 @@
        </navigator>
     </block>
 </swiper>
+<text>往期封面</text>
 <view style="background-color:white;margin:20rpx;padding:20rpx;border-radius:20rpx;">
 <template is='swiperTemplate' data='{{...pics}}'/>
 </view>
+<text>昨日佳图</text>

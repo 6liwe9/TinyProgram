@@ -1,0 +1,10 @@
+<!--pages/pics/picShow.wxml-->
+<view class='all'>
+    <navigator url='picSwitch' class='btn' style='background-color:lightblue'>遇见靓蜜</navigator>
+    <navigator url='addmine' class='btn' style='background-color:lightgreen'>秀我的蜜图</navigator>
+  <picker mode="selector" range="{{array}}" value="{{index}}" bindchange="listenerPickerSelected">
+    <view class='selector'>
+      <text>筛选-{{array[index]}}</text>
+    </view>
+  </picker>
+</view>

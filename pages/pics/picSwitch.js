@@ -12,7 +12,9 @@ Page({
     curr:0,
     picPos:0,
     picArr:[],
-    index: 0
+    index: 0,
+    hate:0,
+    like:0
   },
 
   listenerPickerSelected: function (e) {

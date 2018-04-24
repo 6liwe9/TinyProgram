@@ -1,0 +1,25 @@
+<!--pages/mine/mine.wxml-->
+<view class='userinfo'>
+ <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+</view>
+<text class='textClass'>他的封面</text>
+<view class='contentclas'>
+111111111111111
+</view>
+<text class='textClass'>他的蜜图</text>
+<view class='contentclas'>
+1111111111111111
+</view>
+<text class='textClass'>他的小蜜带走信息</text>
+<view class='contentclas'>
+  <block wx:for="{{articles}}">    
+  <view class='article'>
+    <navigator url='../article/article?articleId=123' >
+      <text class='title'>{{item.title}}</text>
+      <view class='line'></view>
+      <text class='content'>{{item.content}}</text>
+       </navigator>  
+      </view>
+  </block>    
+</view>

@@ -1,0 +1,22 @@
+/* pages/pics/picShow.wxss */
+page{
+  background-color:rgb(240,240,240);
+}
+.all{
+
+}
+.btn{
+  border-radius: 20rpx;
+  margin: 20rpx; 
+  padding: 10rpx;
+  display: flex;
+  justify-content:center;
+}
+.selector{
+  background-color:lightpink;
+  border-radius: 20rpx;
+  margin: 20rpx;
+  padding: 10rpx;
+  display: flex;
+  justify-content:center;
+}

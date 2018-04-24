@@ -3,8 +3,7 @@ App({
 
   data: {
     appid: 'wx29669aff988ce16f',
-    secret: 'aa9efe070558db0dadc603417791d94c',
-    openid:'test'
+    secret: 'aa9efe070558db0dadc603417791d94c'
   } ,
   onLaunch: function () {
     // 展示本地存储能力
@@ -57,6 +56,7 @@ App({
     })
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    openid:null
   }
 })

@@ -29,3 +29,12 @@ page{
   display: flex;
   justify-content:center;
 }
+.cover{
+   display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.number{
+  color: gray;
+  font-size: 50rpx;
+}
