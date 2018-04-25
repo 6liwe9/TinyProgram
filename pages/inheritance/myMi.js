@@ -1,14 +1,18 @@
 // pages/inheritance/myMi.js
 var content_data = require('./type.js')
 var content_data2 = require('../template/tabbar/tabbar.js')
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    err: false,
+    errMsg: '测试',
     fatherText: '父',
-    motherText: '母'
+    motherText: '母',
+    children:null
   },
   listenCheckboxChange:function(e) {
     this.setData({ children: e.detail.value });
@@ -36,11 +40,49 @@ Page({
       barData: content_data2.tabBarData
     });
   },
-  save:function(){
-    wx.showToast({
-      title: '保存成功',
-      duration: 1000
+  showError:function(msg) {
+    this.setData({
+      err: true,
+      errMsg: msg
     })
+    var that = this;
+    setTimeout(function () {
+      that.setData({
+        err: false,
+      })
+
+    }.bind(this), 3000)
+
+  }
+  ,
+  save:function(){
+    if (this.data.fatherText == '父' || this.data.motherText=='母'||this.data.children==null){
+      this.showError("父母或孩子的类型未填写！！！")
+      return;
+    }
+    var that=this;
+    wx.request({
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      url: 'http://114.116.9.92/springmvc/inherit/inherit_add.do',
+      data: {
+        fatherType: that.data.fatherText,
+        motherType: that.data.motherText,
+        children: that.data.children,
+        userId: app.globalData.userId
+      },
+      method: "POST",
+      success: function (res) {
+        if (res.statusCode == 200 && res.data.result == 'success') {
+          wx.showToast({
+            title: '保存成功',
+            duration: 3000,   
+          })
+        }
+      }
+    })
+   
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

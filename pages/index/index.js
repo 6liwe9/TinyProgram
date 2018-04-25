@@ -17,7 +17,10 @@ Page({
     this.setData({ isBtn: false});
     var that=app;
     wx.request({
-      url: 'http://localhost/springmvc/user/user_login.do',
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      }, 
+      url: 'http://114.116.9.92/springmvc/user/user_login.do',
       data: {
         openId: that.globalData.openid,
         nickname: that.globalData.userInfo.nickName,
@@ -25,7 +28,10 @@ Page({
       },
       method: "POST",
       success: function (res) {
-        console.log(res.data)
+        if (res.statusCode==200&&res.data.result =='success'){
+          that.globalData.userId = res.data.data;
+          console.log(that.globalData.userId);
+        }
       }
     })
     this.addAnimation();

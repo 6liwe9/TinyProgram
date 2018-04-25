@@ -1,4 +1,5 @@
 <!--pages/inheritance/myMi.wxml-->
+<view class='error' wx:if ='{{err}}'>{{errMsg}}</view>
 <import src='../template/tabbar/tabbar.wxml'/>
 <view class='view'> 
     <view class='con' bindtap='showMType'>

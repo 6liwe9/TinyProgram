@@ -7,9 +7,13 @@ Page({
    * 页面的初始数据
    */
   data: {
+    err:false,
+    errMsg:'测试',
     fatherText:'父',
     motherText:'母',
-    text:'结果来自蜜友共享,后期将根据数据进行遗传推导'
+    text:'结果根据蜜友共享数据计算,后期将推出根据大量数据进行遗传推导功能',
+    userCnt:null,
+    usegender:true
   },
 
   /**
@@ -18,6 +22,39 @@ Page({
   onLoad: function (options) {
     this.setData({ typeData: content_data.typeData, 
     barData: content_data2.tabBarData});
+    var p = this;
+    wx.request({
+      url: 'http://114.116.9.92/springmvc/inherit/inherit_cnt.do',
+      data: {
+      },
+      method: "GET",
+      success: function (res) {
+        if (res.statusCode == 200 && res.data.result == 'success') {
+          p.setData({ userCnt: res.data.data });
+        }
+      }
+    })
+  },
+  showError(msg){
+    this.setData({
+      err: true,
+      errMsg: msg
+    })
+    var that=this;
+    setTimeout(function () {
+      that.setData({
+        err: false,
+      })
+
+    }.bind(this), 3000)
+
+  }
+  ,
+  switchChange:function(e){
+    this.setData({
+      usegender: e.detail.value
+    }
+    )
   },
   showMType: function () {
     this.setData({ showViewM: true, showViewF: false});
@@ -45,7 +82,30 @@ Page({
   
   },
   addAnimation: function () {
-    
+    if (this.data.fatherText == '父' || this.data.motherText == '母') {
+      this.showError("父母类型没有选择！！！")
+      return;
+    }
+    var that = this;
+    wx.request({
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      url: 'http://114.116.9.92/springmvc/inherit/inherit_calculate.do',
+      data: {
+        fatherType: that.data.fatherText,
+        motherType: that.data.motherText,
+        useGender:that.data.usegender
+      },
+      method: "POST",
+      success: function (res) {
+        if (res.statusCode == 200 && res.data.result == 'success') {
+          that.setData({
+            text: res.data.data
+          })
+          }}
+    })
+
     var animation = wx.createAnimation({
       duration: 1000,
       timingFunction: "ease-in",
@@ -59,9 +119,7 @@ Page({
         this.setData({
           animationData: animation.export()
         })
-        this.setData({
-          text: '原色：60%，马赛克40%'
-        })
+       
       }.bind(this), 1000)
    
   },

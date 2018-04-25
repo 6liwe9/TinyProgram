@@ -1,4 +1,5 @@
 <!--pages/inheritance/inheritance.wxml-->
+<view class='error' wx:if ='{{err}}'>{{errMsg}}</view>
 <import src='../template/tabbar/tabbar.wxml'/>
 <view class='all'>
   <view class='view'> 
@@ -21,17 +22,23 @@
       </block>   
     </view>
   </view>
-    <view class='heart' animation="{{animationData}}" bindtap='addAnimation'> 
+<view class="textClass">
+  <scroll-view scroll-y="true" style="height: 200rpx ;width:80%; ">
+    <text>{{text}}</text>
+  </scroll-view>
+</view>
+<view class='switch'>
+<text>考虑性别</text><switch checked='{{usegender}}' bindchange="switchChange"/>
+</view>
+<view class='heart' animation="{{animationData}}" bindtap='addAnimation'> 
       <view class='con'> 
       <image class='imageP' src='../icons/heart.png'>
       </image>
       <text>配对</text>
       </view>
     </view> 
-<view class="textClass">
-  <scroll-view scroll-y="true" style="height: 200rpx ;width:80%; ">
-    <text>{{text}}</text>
-  </scroll-view>
-</view>
+<view class='share'>
+<text>目前有{{userCnt}}位蜜友共享了自己的小蜜信息，您的共享将使结果更加准确！</text>
 <button bindtap='addMine'>共享我的蜜信息</button>
+</view>
 </view>
