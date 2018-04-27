@@ -65,7 +65,7 @@ Page({
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
       },
-      url: 'http://114.116.9.92/springmvc/inherit/inherit_add.do',
+      url: 'https://www.mymiwo.club/springmvc/inherit/inherit_add.do',
       data: {
         fatherType: that.data.fatherText,
         motherType: that.data.motherText,

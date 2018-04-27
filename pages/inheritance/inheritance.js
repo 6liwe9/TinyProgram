@@ -24,7 +24,7 @@ Page({
     barData: content_data2.tabBarData});
     var p = this;
     wx.request({
-      url: 'http://114.116.9.92/springmvc/inherit/inherit_cnt.do',
+      url: 'https://www.mymiwo.club/springmvc/inherit/inherit_cnt.do',
       data: {
       },
       method: "GET",
@@ -91,7 +91,7 @@ Page({
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
       },
-      url: 'http://114.116.9.92/springmvc/inherit/inherit_calculate.do',
+      url: 'https://www.mymiwo.club/springmvc/inherit/inherit_calculate.do',
       data: {
         fatherType: that.data.fatherText,
         motherType: that.data.motherText,

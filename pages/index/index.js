@@ -20,14 +20,15 @@ Page({
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
       }, 
-      url: 'http://114.116.9.92/springmvc/user/user_login.do',
+      url: 'http://localhost/springmvc/user/user_login.do',
       data: {
         openId: that.globalData.openid,
         nickname: that.globalData.userInfo.nickName,
-        avaterUrl: that.globalData.userInfo.avaterUrl
+        avatarUrl: that.globalData.userInfo.avatarUrl
       },
       method: "POST",
       success: function (res) {
+        var adb = that.globalData.userInfo.avatarUrl;
         if (res.statusCode==200&&res.data.result =='success'){
           that.globalData.userId = res.data.data;
           console.log(that.globalData.userId);
@@ -39,7 +40,7 @@ Page({
   onLoad: function () {
     var p = this;
     wx.request({
-      url: 'http://114.116.9.92/springmvc/hello/wx_cover.do', 
+      url: 'https://www.mymiwo.club/springmvc/hello/wx_cover.do', 
       data: {
       },
       method: "GET",
