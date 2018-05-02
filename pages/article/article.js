@@ -5,17 +5,30 @@ Page({
    * 页面的初始数据
    */
   data: {
-    Title:"测试文章",
-    Content:"文章需要三个部分，标题，内容，和图片列表，可以用作商品详细页展示，小蜜详情展示",
-    Pics: ['../icons/1.png','../icons/2.png']
+    Title:"坏了的文章",
+    Content:"Sorry！文章的内容被小蜜啃坏了！",
+    Pics: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-      this.setData({
-        title: options.articleId
+      var that=this;
+      var articleId = options.articleId;
+      var toUrl ='http://localhost/springmvc/article/getArticle.do?articleId='+articleId;
+      wx.request({
+        url: toUrl,
+        method: "GET",
+        success: function (res) {
+          if(res.data.result=='success'){
+            that.setData({
+              Title: res.data.data.articleTitle,
+              Content: res.data.data.articleContent,
+              Pics: res.data.data.pics
+            });
+          }
+        }
       })
   },
   viewPic:function(e){

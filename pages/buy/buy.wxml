@@ -1,7 +1,7 @@
 <import src='../template/picdisplay/swiper.wxml'/>
 <scroll-view scroll-y="true" style="height: 100%">
 <view class='itemClass'>
-  <navigator url="../article/article?articleId=123" >
+  <navigator url="../article/article?articleId=3265026737039846379" >
     <text>澳大利亚原粉</text>
     <view class='line'></view>
       <template is='swiperTemplate' data='{{...pics}}'/>

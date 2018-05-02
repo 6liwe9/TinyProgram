@@ -1,14 +1,36 @@
 // pages/takeaway/addmine.js
 var content_data = require('../inheritance/type.js')
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    err: false,
+    errMsg: '测试',
     index: 0,
-    hasPic:false
+    hasPic:false,
+    title:'',
+    content:''
+    ,picIndex:0,
+    picIds:[]
   },
+  showError: function (msg) {
+    this.setData({
+      err: true,
+      errMsg: msg
+    })
+    var that = this;
+    setTimeout(function () {
+      that.setData({
+        err: false,
+      })
+
+    }.bind(this), 3000)
+
+  }
+  ,
   onLoad: function (options) {
     var typearray = content_data.typeData.slice(0);
     typearray.unshift('请点击选择类型');
@@ -37,9 +59,84 @@ Page({
       content: e.detail.value
     })
   },
+  savePic:function(){
+    var that = this;
+    wx.uploadFile({
+      url: 'http://localhost/springmvc/pic/uploadPic.do', //
+      filePath: that.data.pics[that.data.picIndex],
+      name: 'pic',
+      header: {
+        "Content-Type":
+        "multipart/form-data"
+      },
+      success: function (res) {
+        res.data = JSON.parse(res.data);
+        if(res.data.result=='success'){
+          var arr=that.data.picIds;
+          arr.push(res.data.data);
+          that.setData({
+            picIndex: that.data.picIndex + 1,
+            picIds: arr
+          });
+          if (that.data.pics.length > that.data.picIndex) {
+            that.savePic();
+          }else
+            that.saveArticle();
+        }else{
+          that.showError('图片上传失败，请稍后再试！')
+        }
+        
+      }
+    })
+  },
+  saveArticle: function () {
+    var that = this;
+    wx.request({
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      url: 'http://localhost/springmvc/article/addTakeArticle.do',
+      data: {
+
+          articleTitle: that.data.title,
+          articleContent: that.data.content,
+        type:that.data.arr[that.data.index],
+        userId: app.globalData.userId,
+        pics: that.data.picIds
+      },
+      method: "POST",
+      success: function (res) {
+        if (res.statusCode == 200 && res.data.result == 'success') {
+          var toUrl="../article/article?articleId="+res.data.data; 
+          wx.showToast({
+            title: '保存成功',
+            duration: 3000,
+            success:function(){
+              wx.navigateTo({
+                url: toUrl
+              })
+            }
+          })
+        }else{
+          that.showError('信息上传失败，请稍后再试！')
+          that.setData( {
+                index: 0,
+                  hasPic:false,
+                    title:'',
+                      content:''
+                        , picIndex:0,
+                          picIds:[],pics:null
+          })
+        }
+      }
+    })
+  },
   save:function(){
-    console.log(this.data.title);
-    console.log(this.data.content);
+    if (this.data.title == '' || this.data.content == '' || this.data.index==0){
+      this.showError("标题、类型或者内容为空，请填写！");
+      return;
+    }
+    this.savePic();
   },
   viewPic:function(e){
     

@@ -28,7 +28,6 @@ Page({
       },
       method: "POST",
       success: function (res) {
-        var adb = that.globalData.userInfo.avatarUrl;
         if (res.statusCode==200&&res.data.result =='success'){
           that.globalData.userId = res.data.data;
           console.log(that.globalData.userId);
