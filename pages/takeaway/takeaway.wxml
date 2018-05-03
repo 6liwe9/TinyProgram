@@ -9,26 +9,30 @@
   </view>
 </picker>
 <scroll-view scroll-y="true" style="height: 100%">
-<view class='itemClass'>
-  <navigator url="../article/article?articleId=123" >
-    <text>玩家原色</text>
+<view class='itemClass' wx:for="{{articles}}" wx:for-item="articles">
+  <navigator url="../article/article?articleId={{articles.articleId}}" >
+  <view class='textView'>
+    <text>{{articles.articleTitle}}</text>
+    </view>
     <view class='line'></view>
-      <template is='swiperTemplate' data='{{...pics}}'/>
+      <swiper class="swiper" indicator-dots="true" autoplay="true" interval="5000" duration="1000">    
+      <block wx:for="{{articles.pics}}"  >    
+        <swiper-item>    
+          <image src="{{item}}"  class="slide-image" mode="aspectFill"/>    
+        </swiper-item>    
+      </block>    
+    </swiper>  
     <view class='line'></view>
     <view class='textView'>
-      <text class='textFont'>原色小蜜</text>
+      <text class='textFont'>{{articles.articleContent}}</text>
     </view>
   </navigator>
-</view>
-<view class='itemClass'>
- <navigator url="../article/article?articleId=123" >
-    <text>出袋三月的白金马赛克</text>
-    <view class='line'></view>
-      <template is='swiperTemplate' data='{{...pics}}'/>
-    <view class='line'></view>
-    <view class='textView'>
-      <text class='textFont'>出袋三个月的白金马赛克</text>
+   <view class='line'></view>
+    <view class='user'>
+      <navigator url="../other/mine?userId={{articles.user.userId}}" class='navi'>
+        <image class='userimage' src='{{articles.user.avatarUrl}}'></image>
+        </navigator>
     </view>
-  </navigator>
+
 </view>
 </scroll-view>

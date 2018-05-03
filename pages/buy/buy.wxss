@@ -3,6 +3,13 @@
 page{
   background-color:rgb(240,240,240);
 }
+.swiper {
+  width: 100%;
+}
+.swiper image {
+  height: 100%;
+  width: 100%;
+}
 .itemClass{
   background-color:white;
   margin:20rpx;

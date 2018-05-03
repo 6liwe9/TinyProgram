@@ -1,10 +1,13 @@
 // pages/mine/advice.js
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    err: false,
+    errMsg: '测试',
    content:''
   },
   
@@ -19,8 +22,52 @@ Page({
       content: e.detail.value
     })
   },
+  showError: function (msg) {
+    this.setData({
+      err: true,
+      errMsg: msg
+    })
+    var that = this;
+    setTimeout(function () {
+      that.setData({
+        err: false,
+      })
+
+    }.bind(this), 3000)
+
+  }
+  ,
   save: function () {
-    console.log(this.data.content);
+    var that = this;
+    if(that.data.content==''){
+      that.showError("建议内容未填写")
+      return
+    }
+    wx.request({
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      url: 'http://localhost/springmvc/advice/addAdvice.do',
+      data: {
+        userId: app.globalData.userId,
+        adviceContent:that.data.content
+      },
+      method: "POST",
+      success: function (res) {
+        if (res.statusCode == 200 && res.data.result == 'success') {
+          wx.showToast({
+            title: '保存成功',
+            duration: 3000
+          })
+          that.setData({
+            content: ''
+          })
+        }
+        else{
+          that.showError('保存失败，请稍后再试');
+        }
+      }
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

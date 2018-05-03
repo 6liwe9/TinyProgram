@@ -7,17 +7,52 @@ Page({
    */
   data: {
     userInfo: app.globalData.userInfo,
-    articles: [{ title: '这是一个标题', content: '这是一个内容' }, { title: '这是第二个标题', content: '这是第二个内容' }]
+    articles: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({
-      userInfo: app.globalData.userInfo
+    var uId = options.userId;
+    var that=this;
+    that.setData({
+      userId:uId
+    })
+    wx.request({
+      url: 'http://localhost/springmvc/user/user_get.do?userId=' + uId,
+      method: "GET",
+      success: function (res) {
+        if (res.statusCode == 200 && res.data.result == 'success') {
+            that.setData({
+              userInfo:res.data.data
+            })
+        }
+      }
+    })
+    that.getArticle();
+  },
+  getArticle:function(){
+    var that = this;
+    wx.request({
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      url: 'http://localhost/springmvc/article/getTakeArticle.do',
+      data: {
+        userId: that.data.userId
+      },
+      method: "POST",
+      success: function (res) {
+        if (res.statusCode == 200 && res.data.result == 'success') {
+          that.setData({
+            articles: res.data.data
+          })
+        }
+      }
     })
   },
+  
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

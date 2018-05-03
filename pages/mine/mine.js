@@ -6,8 +6,10 @@ Page({
    * 页面的初始数据
    */
   data: {
+    err: false,
+    errMsg: '测试',
     userInfo: app.globalData.userInfo,
-    articles: [{ title: '这是一个标题', content: '这是一个内容' }, { title: '这是第二个标题', content: '这是第二个内容' }]
+    articles:[]
   },
 
   /**
@@ -17,10 +19,61 @@ Page({
     this.setData({
       userInfo: app.globalData.userInfo
     })
+    this.getArticle();
+  },
+  getArticle:function(){
+    var that = this;
+    wx.request({
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      url: 'http://localhost/springmvc/article/getTakeArticle.do',
+      data: {
+        userId: app.globalData.userId
+      },
+      method: "POST",
+      success: function (res) {
+        if (res.statusCode == 200 && res.data.result == 'success') {
+          that.setData({
+            articles: res.data.data
+          })
+        }
+      }
+    })
+  }
+  ,
+  showError: function (msg) {
+    this.setData({
+      err: true,
+      errMsg: msg
+    })
+    var that = this;
+    setTimeout(function () {
+      that.setData({
+        err: false,
+      })
+
+    }.bind(this), 3000)
+
   },
   delete:function(e){
     var aid=e.target.dataset.aid;
-    console.log(aid);
+    var that = this;
+    wx.request({
+      url: 'http://localhost/springmvc/article/delTakeArticle.do?articleId='+aid,
+      method: "GET",
+      success: function (res) {
+        if (res.statusCode == 200 && res.data.result == 'success') {
+          wx.showToast({
+            title: '保存成功',
+            duration: 3000
+          })
+          that.getArticle();
+        }else{
+          that.showError('删除失败，请稍后再试')
+        }
+      }
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

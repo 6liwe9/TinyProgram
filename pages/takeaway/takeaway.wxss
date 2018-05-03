@@ -2,6 +2,13 @@
 page{
   background-color:rgb(240,240,240);
 }
+.swiper {
+  width: 100%;
+}
+.swiper image {
+  height: 100%;
+  width: 100%;
+}
 .selector{
   background-color:lightpink;
   border-radius: 20rpx;
@@ -27,7 +34,7 @@ page{
   margin-bottom: 20rpx;
   margin-left: 20rpx;
   margin-right: 20rpx;
-  padding:20rpx;
+  padding: 20rpx;
   border-radius:20rpx;
 }
 .line{
@@ -44,4 +51,19 @@ page{
   font-family: '黑体';
   text-align: center;
   color: gray;
+}
+.userimage{
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%
+}
+.user{
+  display: flex;
+  justify-content:center;
+  margin-top: 5rpx;
+}
+.navi{
+  display: flex;
+  justify-content:center;
+  flex-direction: column;
 }

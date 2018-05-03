@@ -2,6 +2,14 @@
 page{
   background-color:rgb(240,240,240);
 }
+.error{
+  width: 100%;
+  background-color: red;
+  font-size: 30rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
 .textview{
   padding: 10rpx;
   background-color: white;

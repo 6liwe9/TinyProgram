@@ -7,9 +7,7 @@ Page({
    */
   data: {
     index: 0,
-    pics: {
-      pics: [{ url: '../icons/1.png' }, { url: '../icons/2.png' }]
-    }
+    articles:[]
   },
 
   /**
@@ -21,11 +19,35 @@ Page({
     this.setData({
       array:typearray
       })
+    this.loadArticle(this.data.array[this.data.index]);
+  },
+  loadArticle:function(mitype){
+    var that=this;
+    if(mitype=='所有类型')
+      mitype='';
+    wx.request({
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      url: 'http://localhost/springmvc/article/getTakeArticle.do',
+      data: {
+        type:mitype
+      },
+      method: "POST",
+      success: function (res) {
+        if (res.statusCode == 200 && res.data.result == 'success') {
+          that.setData({
+            articles:res.data.data
+          })
+        }
+      }
+    })
   },
   listenerPickerSelected:function(e){
     this.setData({
       index: e.detail.value
     });
+    this.loadArticle(this.data.array[this.data.index]);
   },
   addMine:function(){
     wx.navigateTo({

@@ -5,16 +5,26 @@ Page({
    * 页面的初始数据
    */
   data: {
-    pics: {
-      pics: [{ url: '../icons/1.png' }, { url: '../icons/2.png' }]
-    }
+    articles: [],
+    userInfo:null
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    var that = this;
+    wx.request({
+      url: 'http://localhost/springmvc/article/getSaleArticle.do',
+      method: "GET",
+      success: function (res) {
+        if (res.statusCode == 200 && res.data.result == 'success') {
+          that.setData({
+            articles: res.data.data
+          })
+        }
+      }
+    })
   },
 
   /**

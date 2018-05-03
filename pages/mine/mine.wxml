@@ -1,4 +1,5 @@
 <!--pages/mine/mine.wxml-->
+<view class='error' wx:if ='{{err}}'>{{errMsg}}</view>
 <view class='userinfo'>
  <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
       <text class="userinfo-nickname">{{userInfo.nickName}}</text>
@@ -15,14 +16,14 @@
 <view class='contentclas'>
   <block wx:for="{{articles}}">    
   <view class='article'>
-    <navigator url='../article/article?articleId=123' >
-      <text class='title'>{{item.title}}</text>
+    <navigator url='../article/article?articleId={{item.articleId}}' >
+      <text class='title'>{{item.articleTitle}}</text>
       <view class='line'></view>
-      <text class='content'>{{item.content}}</text>
+      <text class='content'>{{item.articleContent}}</text>
        <view class='line'></view>
        </navigator>  
        <view class='del'>
-         <image src="../icons/delete.png" style='width:50rpx;height:50rpx;' bindtap='delete'data-aid='123'></image>
+         <image src="../icons/delete.png" style='width:50rpx;height:50rpx;' bindtap='delete'data-aid='{{item.articleId}}'></image>
        </view>
       </view>
   </block>    
