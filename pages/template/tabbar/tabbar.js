@@ -8,7 +8,7 @@ var content_for = {
   ,
   {
     barUrl: '../other/mine',
-    text: '食谱',
+    text: '我的蜜',
     image: '../icons/1.png'
   },
   {

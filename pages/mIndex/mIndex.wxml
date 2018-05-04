@@ -1,16 +1,24 @@
 <import src='../template/tabbar/tabbar.wxml'/>
 <import src='../template/picdisplay/swiper.wxml'/>
 <view class="navipics">
-  <template is='swiperTemplate' data='{{...pics}}'/>
+   <swiper class="swiper" indicator-dots="true" autoplay="true" interval="5000" duration="1000">    
+      <block wx:for="{{msgList}}"  >
+         <navigator url="/pages/article/article?articleId={{item.articleid}}" open-type="navigate">    
+        <swiper-item>    
+          <image src="{{item.cover}}"  class="slide-image" mode="aspectFill"/>    
+        </swiper-item>   
+        </navigator> 
+      </block>    
+    </swiper>  
 </view>
 <view class='navi'>
   <template is='tabbar' data='{{...barData}}'/>
 </view>
 <swiper class="swiper_container" vertical="true" autoplay="true" circular="true" interval="2000">
     <block wx:for="{{msgList}}">
-      <navigator url="/pages/article/article?articleId={{item.id}}" open-type="navigate">
+      <navigator url="/pages/article/article?articleId={{item.articleid}}" open-type="navigate">
          <swiper-item>
-         <view class="swiper_item">{{item.title}}</view>
+         <view class="swiper_item">{{item.text}}</view>
         </swiper-item>
        </navigator>
     </block>

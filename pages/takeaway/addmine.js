@@ -119,15 +119,15 @@ Page({
           })
         }else{
           that.showError('信息上传失败，请稍后再试！')
-          that.setData( {
-                index: 0,
-                  hasPic:false,
-                    title:'',
-                      content:''
-                        , picIndex:0,
-                          picIds:[],pics:null
-          })
         }
+        that.setData({
+          index: 0,
+          hasPic: false,
+          title: '',
+          content: ''
+          , picIndex: 0,
+          picIds: [], pics: null
+        })
       }
     })
   },

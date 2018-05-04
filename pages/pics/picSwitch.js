@@ -34,20 +34,31 @@ Page({
     })
     this.initImages(typearray[0]);
   },
-  initImages:function(type){
+  initImages:function(mtype){
     var p = this;
+    var that = this;
     wx.request({
-      url: 'http://114.116.9.92/springmvc/hello/wx_image.do',
-      data: {
-        sortType: type
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
       },
-      method: "GET",
+      url: 'http://localhost/springmvc/mipic/getRandomPics.do',
+      data: {
+        type: mtype,
+        cnt:7
+      },
+      method: "POST",
       success: function (res) {
-        p.setData({
-          picArr: res.data.imageUrl
-        });
+        if (res.statusCode == 200 && res.data.result == 'success') {
+        that.setData({
+          picArr:res.data.data,
+          picPos:0
+        })
         var p1 = p.data.picArr[0];
         var p2 = p.data.picArr[1];
+        that.setData({
+          like:p1.like,
+          hate:p1.hate
+        })
         var now=p.data.curr;
         if (now == 0)
           p.setData({
@@ -71,26 +82,32 @@ Page({
           picPos: 2,
           curr: 0
         })
+        }
       }
-    })
+    }) 
   },
-  getImages:function(type){
+  getImages:function(mtype){
     var p=this;
     wx.request({
-      url: 'http://114.116.9.92/springmvc/hello/wx_image.do',
-      data: {
-        sortType:type
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
       },
-      method: "GET",
+      url: 'http://localhost/springmvc/mipic/getRandomPics.do',
+      data: {
+        type: mtype,
+        cnt: 7
+      },
+      method: "POST",
       success: function (res) {
         p.setData({
-          picArr: res.data.imageUrl,
+          picArr: res.data.data,
           picPos: 0 
         });
       }
     })
   },
   change:function(e){
+    var that=this;
     var now=e.detail.current;
     var pre=this.data.curr;
     var dir=''
@@ -102,14 +119,35 @@ Page({
       dir="left";
     if(now -pre==2)
       dir="right";
-    var pos=this.data.picPos;
-      
+    var pos=this.data.picPos; 
     var pic = this.data.picArr[pos];
+    var mlike=that.data.like;
+    var mhate=that.data.hate;
+    if(dir=="right")
+      mlike+=1;
+    else
+      mhate+=1;
+    wx.request({
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      url: 'http://localhost/springmvc/mipic/valueMiPic.do',
+      data: {
+        picId: pic.picId,
+        like:mlike,
+        hate:mhate
+      },
+      method: "POST"
+    })
     if(pos==6){
       this.getImages(this.data.array[this.data.index]);
+      pos=0;
+    }else{
+      pos+=1;
     }
+    pic = this.data.picArr[pos];
     var p=this;
-    this.setData({ picPos: pos + 1, curr:now});
+    this.setData({ picPos: pos, curr:now,like:pic.like,hate:pic.hate});
     setTimeout(function () {
       if (now == 0)
         p.setData({

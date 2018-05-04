@@ -1,3 +1,4 @@
+<view class='error' wx:if ='{{err}}'>{{errMsg}}</view>
 <view class='all'>
 <block wx:if="{{!hasPic}}">
   <image class='image' bindtap='uploadPics' src='../icons/icon_add.png'></image>

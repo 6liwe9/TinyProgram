@@ -6,10 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    msgList: [
-      { id: "123", title: "公告：多地首套房贷利率上浮 热点城市渐迎零折扣时代" },
-       { id: "123", title: "公告：悦如公寓三周年生日趴邀你免费吃喝欢唱" },
-       { id: "123", title: "公告：你想和一群有志青年一起过生日嘛？" }],
+    msgList: [],
     pics: {
       pics: [{ url: 'http://114.116.9.92/springmvc/wximages/test1.jpg' }, { url: '/pages/icons/2.png'}]}
   },
@@ -19,6 +16,21 @@ Page({
    */
   onLoad: function (options) {
     this.setData({ barData: content_data.tabBarData});
+    this.getAnnounce();
+  },
+  getAnnounce:function(){
+    var that = this;
+    wx.request({
+      url: 'http://localhost/springmvc/article/getAnnounce.do',
+      method: "GET",
+      success: function (res) {
+        if (res.statusCode == 200 && res.data.result == 'success') {
+          that.setData({
+            msgList: res.data.data
+          })
+        }
+      }
+    }) 
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
