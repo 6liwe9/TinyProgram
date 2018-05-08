@@ -7,8 +7,9 @@ Page({
    */
   data: {
     msgList: [],
-    pics: {
-      pics: [{ url: 'http://114.116.9.92/springmvc/wximages/test1.jpg' }, { url: '/pages/icons/2.png'}]}
+    page: 1,
+    size: 10,
+    picArr: []
   },
 
   /**
@@ -17,11 +18,31 @@ Page({
   onLoad: function (options) {
     this.setData({ barData: content_data.tabBarData});
     this.getAnnounce();
+    var that = this;
+    wx.request({
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      url: 'https://www.mymiwo.club/springmvc/mipic/getYesterdayPics.do',
+      data: {
+        page: that.data.page,
+        size: 10
+      },
+      method: "POST",
+      success: function (res) {
+        if (res.statusCode == 200 && res.data.result == 'success') {
+          that.setData({
+            picArr: res.data.data,
+            page: that.data.page + 1
+          })
+        }
+      }
+    })
   },
   getAnnounce:function(){
     var that = this;
     wx.request({
-      url: 'http://localhost/springmvc/article/getAnnounce.do',
+      url: 'https://www.mymiwo.club/springmvc/article/getAnnounce.do',
       method: "GET",
       success: function (res) {
         if (res.statusCode == 200 && res.data.result == 'success') {
@@ -70,7 +91,29 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-  
+    var pics = this.data.picArr;
+    var that = this;
+    wx.request({
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      url: 'https://www.mymiwo.club/springmvc/mipic/getYesterdayPics.do',
+      data: {
+        type: that.data.array[that.data.index],
+        page: that.data.page,
+        size: 10
+      },
+      method: "POST",
+      success: function (res) {
+        if (res.statusCode == 200 && res.data.result == 'success') {
+          pics.concat(res.data.data)
+          that.setData({
+            picArr: pics,
+            page: that.data.page + 1
+          })
+        }
+      }
+    })
   },
 
   /**

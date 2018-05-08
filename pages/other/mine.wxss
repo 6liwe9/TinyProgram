@@ -71,3 +71,6 @@ page{
   font-size: 35rpx;
   color: grey;
 }
+.slide-image{
+  width: 100%
+}

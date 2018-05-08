@@ -1,0 +1,17 @@
+/* pages/map/map.wxss */
+page{
+  background-color:rgb(240,240,240);
+}
+.mapc{
+  height: 100%;
+  width: 100%;
+  border-radius: 20rpx;
+  margin: 5rpx;
+}
+.btn{
+  border-radius: 20rpx;
+  margin: 20rpx; 
+  padding: 10rpx;
+  display: flex;
+  justify-content:center;
+}

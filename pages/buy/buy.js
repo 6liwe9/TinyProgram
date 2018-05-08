@@ -15,7 +15,7 @@ Page({
   onLoad: function (options) {
     var that = this;
     wx.request({
-      url: 'http://localhost/springmvc/article/getSaleArticle.do',
+      url: 'https://www.mymiwo.club/springmvc/article/getSaleArticle.do',
       method: "GET",
       success: function (res) {
         if (res.statusCode == 200 && res.data.result == 'success') {

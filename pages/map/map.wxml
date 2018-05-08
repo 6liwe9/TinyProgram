@@ -1,0 +1,6 @@
+<!--pages/map/map.wxml-->
+<view>
+ <map id="map" longitude="{{longitude}}" latitude="{{latitude}}" scale="{{scale}}"  markers="{{markers}}" circles="{{circles}}" bindmarkertap="markertap" show-location style="width: 100%; height: 1000rpx"></map>
+</view>
+<view class='btn' style='background-color:lightgreen' bindtap='getOther'>查看蜜友分布</view>
+<view class='btn' style='background-color:white' bindtap='getOther'>查看蜜友分布需要共享自己的位置</view>

@@ -4,11 +4,11 @@
 <view class='all'>
   <view class='view'> 
     <view class='con' bindtap='showMType'>
-      <image class='imageP' src='../icons/2.png'></image>
+      <image class='imageP' src='../icons/m2.jpg'></image>
       <text>{{motherText}}</text>
     </view>
     <view class='con' bindtap='showFType'> 
-      <image class='imageP' src='../icons/4.png'></image>
+      <image class='imageP' src='../icons/m4.jpg'></image>
       <text>{{fatherText}}</text>
     </view> 
     <view class="btnClass{{showViewF?'':'NotSeen'}}">

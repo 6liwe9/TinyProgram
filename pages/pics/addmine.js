@@ -67,7 +67,7 @@ Page({
   savePic:function(){
     var that = this;
     wx.uploadFile({
-      url: 'http://localhost/springmvc/pic/uploadPic.do', //
+      url: 'https://www.mymiwo.club/springmvc/pic/uploadPic.do', //
       filePath: that.data.pics[that.data.picIndex],
       name: 'pic',
       header: {
@@ -100,7 +100,7 @@ Page({
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
       },
-      url: 'http://localhost/springmvc/mipic/savePic.do',
+      url: 'https://www.mymiwo.club/springmvc/mipic/savePic.do',
       data: {
         type: that.data.arr[that.data.index],
         userId: app.globalData.userId,
@@ -109,7 +109,7 @@ Page({
       method: "POST",
       success: function (res) {
         if (res.statusCode == 200 && res.data.result == 'success') {
-          var toUrl = "../mine/mine" ;
+          var toUrl = "../pics/showMine?userId=" + app.globalData.userId ;
           wx.showToast({
             title: '保存成功,转到我的页面查看',
             duration: 3000,

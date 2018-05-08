@@ -4,13 +4,17 @@
  <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
       <text class="userinfo-nickname">{{userInfo.nickName}}</text>
 </view>
-<text class='textClass'>我的封面</text>
-<view class='contentclas'>
-111111111111111
-</view>
 <text class='textClass'>我的蜜图</text>
 <view class='contentclas'>
-1111111111111111
+<navigator url='../pics/showMine?userId={{userId}}' >
+<swiper class="swiper" indicator-dots="true" autoplay="true" interval="5000" duration="1000">    
+      <block wx:for="{{picArr}}"  >
+        <swiper-item>    
+          <image src="{{item.url}}"  class="slide-image" mode="aspectFill"/>    
+        </swiper-item>   
+      </block>    
+    </swiper>  
+</navigator>
 </view>
 <text class='textClass'>我发布小蜜带走信息</text>
 <view class='contentclas'>

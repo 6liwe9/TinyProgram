@@ -12,27 +12,14 @@ Page({
     curr:0,
     picPos:0,
     picArr:[],
-    index: 0,
     hate:0,
     like:0
-  },
-
-  listenerPickerSelected: function (e) {
-    this.setData({
-      index: e.detail.value
-    });
-    this.initImages(this.data.array[e.detail.value]);
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var typearray = content_data.typeData.slice(0);
-    typearray.unshift('所有类型');
-    this.setData({
-      array: typearray
-    })
-    this.initImages(typearray[0]);
+    this.initImages('所有类型');
   },
   initImages:function(mtype){
     var p = this;
@@ -41,7 +28,7 @@ Page({
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
       },
-      url: 'http://localhost/springmvc/mipic/getRandomPics.do',
+      url: 'https://www.mymiwo.club/springmvc/mipic/getRandomPics.do',
       data: {
         type: mtype,
         cnt:7
@@ -92,7 +79,7 @@ Page({
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
       },
-      url: 'http://localhost/springmvc/mipic/getRandomPics.do',
+      url: 'https://www.mymiwo.club/springmvc/mipic/getRandomPics.do',
       data: {
         type: mtype,
         cnt: 7
@@ -131,7 +118,7 @@ Page({
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
       },
-      url: 'http://localhost/springmvc/mipic/valueMiPic.do',
+      url: 'https://www.mymiwo.club/springmvc/mipic/valueMiPic.do',
       data: {
         picId: pic.picId,
         like:mlike,
@@ -140,7 +127,7 @@ Page({
       method: "POST"
     })
     if(pos==6){
-      this.getImages(this.data.array[this.data.index]);
+      this.getImages('所有类型');
       pos=0;
     }else{
       pos+=1;

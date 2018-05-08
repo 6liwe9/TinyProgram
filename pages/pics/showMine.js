@@ -1,4 +1,4 @@
-// pages/mine/advice.js
+// pages/pics/showMine.js
 const app = getApp()
 Page({
 
@@ -6,72 +6,79 @@ Page({
    * 页面的初始数据
    */
   data: {
-    err: false,
-    errMsg: '测试',
-   content:''
+    picArr:[],
+    showDel:false
   },
-  
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
-  },
-  bindTextAreaBlur: function (e) {
     this.setData({
-      content: e.detail.value
+      userId: options.userId
+    }
+    )
+    this.getPics();
+  },
+  viewPic: function (e) {
+    wx.previewImage({
+      current: e.target.dataset.pic,
+      urls: [e.target.dataset.pic],
+      fail: function () {
+        console.log('fail')
+      },
+      complete: function () {
+        console.info("点击图片了");
+      }
     })
   },
-  showError: function (msg) {
-    this.setData({
-      err: true,
-      errMsg: msg
-    })
+  getPics:function(){
     var that = this;
-    setTimeout(function () {
-      that.setData({
-        err: false,
-      })
-
-    }.bind(this), 3000)
-
-  }
-  ,
-  save: function () {
-    var that = this;
-    if(that.data.content==''){
-      that.showError("建议内容未填写")
-      return
+    var muserId = that.data.userId;
+    if (muserId == app.globalData.userId) {
+      that.setData({ showDel: true });
     }
     wx.request({
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
       },
-      url: 'https://www.mymiwo.club/springmvc/advice/addAdvice.do',
+      url: 'https://www.mymiwo.club/springmvc/mipic/getPicsByUser.do',
       data: {
-        userId: app.globalData.userId,
-        adviceContent:that.data.content
+        userId: muserId
       },
       method: "POST",
       success: function (res) {
         if (res.statusCode == 200 && res.data.result == 'success') {
-          wx.showToast({
-            title: '保存成功',
-            duration: 3000
-          })
           that.setData({
-            content: ''
+            picArr: res.data.data
           })
-        }
-        else{
-          that.showError('保存失败，请稍后再试');
         }
       }
     })
   },
+  delpic:function(e){
+    var aid = e.target.dataset.aid;
+    var that=this;
+    wx.request({
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      url: 'https://www.mymiwo.club/springmvc/mipic/delPics.do',
+      data: {
+        picId: aid
+      },
+      method: "POST",
+      success: function (res) {
+        if (res.statusCode == 200 && res.data.result == 'success') {
+          that.getPics();
+        }
+      }
+    })
+  }
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
+  ,
   onReady: function () {
   
   },

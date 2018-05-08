@@ -1,9 +1,4 @@
 <!--pages/pics/picSwitch.wxml-->
-<picker mode="selector" range="{{array}}" value="{{index}}" bindchange="listenerPickerSelected">
-  <view class='selector'>
-    <text>{{array[index]}}</text>
-  </view>
-</picker>
 <view class='all'>
   <swiper indicator-dots='{{auto}}' autoplay="{{auto}}" circular="true" bindchange='change' style='height:800rpx'>    
         <swiper-item>    

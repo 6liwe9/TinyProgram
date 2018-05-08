@@ -62,7 +62,7 @@ Page({
   savePic:function(){
     var that = this;
     wx.uploadFile({
-      url: 'http://localhost/springmvc/pic/uploadPic.do', //
+      url: 'https://www.mymiwo.club/springmvc/pic/uploadPic.do', //
       filePath: that.data.pics[that.data.picIndex],
       name: 'pic',
       header: {
@@ -95,7 +95,7 @@ Page({
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
       },
-      url: 'http://localhost/springmvc/article/addTakeArticle.do',
+      url: 'https://www.mymiwo.club/springmvc/article/addTakeArticle.do',
       data: {
 
           articleTitle: that.data.title,

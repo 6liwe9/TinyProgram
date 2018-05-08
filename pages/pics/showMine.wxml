@@ -1,0 +1,17 @@
+<!--pages/pics/showMine.wxml-->
+<block  wx:for="{{picArr}}" wx:for-item="pic">
+<view class='picClass'>
+  <image src="{{pic.url}}" bindtap='viewPic' class="slide-image" mode="aspectFill" data-pic='{{pic.url}}'/>   
+    <view class='user'>
+    <view class='wrap'>
+    <image src="../icons/thumbs-o-down.png" class="userimage"/>
+    {{pic.hate}}
+    </view>
+    <image src="../icons/delete.png" class="userimage" bindtap='delpic' data-aid='{{pic.picId}}'/>
+         <view class='wrap'>
+        {{pic.like}}
+        <image src="../icons/thumbs-o-up.png" class="userimage"/>
+     </view>
+    </view>
+</view>
+</block>

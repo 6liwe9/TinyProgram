@@ -1,17 +1,11 @@
-/* pages/pics/picShow.wxss */
+/* pages/pics/showMine.wxss */
 page{
   background-color:rgb(240,240,240);
-}
-.all{
-  border-radius: 20rpx;
-  margin: 20rpx; 
 }
 .picClass{
   background-color: white;
   border-radius: 20rpx;
-  margin: 20rpx; 
-
-  
+  margin: 20rpx;  
 }
 .wrap{
 color: gray;
@@ -27,21 +21,6 @@ color: gray;
   justify-content:space-between;
   flex-direction: row;
   margin-top: 5rpx;
-}
-.btn{
-  border-radius: 20rpx;
-  margin: 20rpx; 
-  padding: 10rpx;
-  display: flex;
-  justify-content:center;
-}
-.selector{
-  background-color:lightpink;
-  border-radius: 20rpx;
-  margin: 20rpx;
-  padding: 10rpx;
-  display: flex;
-  justify-content:center;
 }
 .slide-image{
   width: 100%;

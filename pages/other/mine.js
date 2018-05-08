@@ -20,7 +20,7 @@ Page({
       userId:uId
     })
     wx.request({
-      url: 'http://localhost/springmvc/user/user_get.do?userId=' + uId,
+      url: 'https://www.mymiwo.club/springmvc/user/user_get.do?userId=' + uId,
       method: "GET",
       success: function (res) {
         if (res.statusCode == 200 && res.data.result == 'success') {
@@ -31,6 +31,27 @@ Page({
       }
     })
     that.getArticle();
+    that.getPics();
+  },
+  getPics: function () {
+    var that = this;
+    wx.request({
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      url: 'https://www.mymiwo.club/springmvc/mipic/getPicsByUser.do',
+      data: {
+        userId: that.data.userId
+      },
+      method: "POST",
+      success: function (res) {
+        if (res.statusCode == 200 && res.data.result == 'success') {
+          that.setData({
+            picArr: res.data.data
+          })
+        }
+      }
+    })
   },
   getArticle:function(){
     var that = this;
@@ -38,7 +59,7 @@ Page({
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
       },
-      url: 'http://localhost/springmvc/article/getTakeArticle.do',
+      url: 'https://www.mymiwo.club/springmvc/article/getTakeArticle.do',
       data: {
         userId: that.data.userId
       },

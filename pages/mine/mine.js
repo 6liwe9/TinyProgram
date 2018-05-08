@@ -9,7 +9,8 @@ Page({
     err: false,
     errMsg: '测试',
     userInfo: app.globalData.userInfo,
-    articles:[]
+    articles:[],
+    userId:''
   },
 
   /**
@@ -17,9 +18,32 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      userInfo: app.globalData.userInfo
+      userInfo: app.globalData.userInfo,
+      userId:app.globalData.userId
     })
     this.getArticle();
+    this.getPics();
+  },
+  getPics: function () {
+    var that = this;
+    var muserId =  app.globalData.userId;
+    wx.request({
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      url: 'https://www.mymiwo.club/springmvc/mipic/getPicsByUser.do',
+      data: {
+        userId: muserId
+      },
+      method: "POST",
+      success: function (res) {
+        if (res.statusCode == 200 && res.data.result == 'success') {
+          that.setData({
+            picArr: res.data.data
+          })
+        }
+      }
+    })
   },
   getArticle:function(){
     var that = this;
@@ -27,7 +51,7 @@ Page({
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
       },
-      url: 'http://localhost/springmvc/article/getTakeArticle.do',
+      url: 'https://www.mymiwo.club/springmvc/article/getTakeArticle.do',
       data: {
         userId: app.globalData.userId
       },
@@ -60,7 +84,7 @@ Page({
     var aid=e.target.dataset.aid;
     var that = this;
     wx.request({
-      url: 'http://localhost/springmvc/article/delTakeArticle.do?articleId='+aid,
+      url: 'https://www.mymiwo.club/springmvc/article/delTakeArticle.do?articleId='+aid,
       method: "GET",
       success: function (res) {
         if (res.statusCode == 200 && res.data.result == 'success') {

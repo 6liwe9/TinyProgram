@@ -29,7 +29,7 @@ Page({
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
       },
-      url: 'http://localhost/springmvc/article/getTakeArticle.do',
+      url: 'https://www.mymiwo.club/springmvc/article/getTakeArticle.do',
       data: {
         type:mitype
       },

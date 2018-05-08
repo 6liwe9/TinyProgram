@@ -20,7 +20,7 @@ Page({
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
       }, 
-      url: 'http://localhost/springmvc/user/user_login.do',
+      url: 'https://www.mymiwo.club/springmvc/user/user_login.do',
       data: {
         openId: that.globalData.openid,
         nickname: that.globalData.userInfo.nickName,
@@ -38,16 +38,16 @@ Page({
   },
   onLoad: function () {
     var p = this;
-    wx.request({
-      url: 'https://www.mymiwo.club/springmvc/hello/wx_cover.do', 
-      data: {
-      },
-      method: "GET",
-      success: function (res) {
-        p.setData({ imageUrl: res.data.imageUrl });
-        console.log(res.data)
-      }
-    })
+   // wx.request({
+    //  url: 'https://www.mymiwo.club/springmvc/hello/wx_cover.do', 
+     // data: {
+     // },
+     // method: "GET",
+     // success: function (res) {
+        p.setData({ imageUrl: 'https://www.mymiwo.club/wximages/cover/cover.jpg'});
+      //  console.log(res.data)
+     // }
+   // })
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,

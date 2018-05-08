@@ -23,8 +23,18 @@
        </navigator>
     </block>
 </swiper>
-<text>往期封面</text>
-<view style="background-color:white;margin:20rpx;padding:20rpx;border-radius:20rpx;">
-<template is='swiperTemplate' data='{{...pics}}'/>
+<text class='title'>昨日佳图</text>
+<scroll-view scroll-y="true">
+<block  wx:for="{{picArr}}" wx:for-item="pic">
+<view class='picClass'>
+   <image src="{{pic.url}}" class="slide-image" mode="aspectFill"/>   
+    <view class='user'>
+  
+      <navigator url="../other/mine?userId={{pic.userId}}" class='navi'>
+     
+        <image class='userimage' src='{{pic.avatar}}'></image>
+        </navigator> 
+    </view>
 </view>
-<text>昨日佳图</text>
+</block>
+</scroll-view>
