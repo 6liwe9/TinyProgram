@@ -1,5 +1,6 @@
 // pages/takeaway/addmine.js
 var content_data = require('../inheritance/type.js')
+var host = require('../../utils/host.js')
 const app = getApp()
 Page({
 
@@ -37,6 +38,7 @@ Page({
     this.setData({
       arr: typearray
     })
+    this.getArticleCnt();
   },
   listenerPickerSelected: function (e) {
     this.setData({
@@ -62,7 +64,7 @@ Page({
   savePic:function(){
     var that = this;
     wx.uploadFile({
-      url: 'https://www.mymiwo.club/springmvc/pic/uploadPic.do', //
+      url: host.Url+'/springmvc/pic/uploadPic.do', //
       filePath: that.data.pics[that.data.picIndex],
       name: 'pic',
       header: {
@@ -95,7 +97,7 @@ Page({
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
       },
-      url: 'https://www.mymiwo.club/springmvc/article/addTakeArticle.do',
+      url: host.Url+'/springmvc/article/addTakeArticle.do',
       data: {
 
           articleTitle: that.data.title,
@@ -131,9 +133,33 @@ Page({
       }
     })
   },
+  getArticleCnt: function () {
+    var that = this;
+    wx.request({
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      url: host.Url + '/springmvc/article/getTakeArticle.do',
+      data: {
+        userId: app.globalData.userId
+      },
+      method: "POST",
+      success: function (res) {
+        if (res.statusCode == 200 && res.data.result == 'success') {
+          that.setData({
+            articlesCnt: res.data.data.length
+          })
+        }
+      }
+    })
+  },
   save:function(){
     if (this.data.title == '' || this.data.content == '' || this.data.index==0){
       this.showError("标题、类型或者内容为空，请填写！");
+      return;
+    }
+    if (this.data.articlesCnt>1){
+      this.showError("初级阶段，每人只能发布最多5条带走信息！");
       return;
     }
     this.savePic();

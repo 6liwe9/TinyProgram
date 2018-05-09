@@ -1,5 +1,6 @@
 // pages/takeaway/takeaway.js
 var content_data = require('../inheritance/type.js')
+var host = require('../../utils/host.js')
 Page({
 
   /**
@@ -7,7 +8,9 @@ Page({
    */
   data: {
     index: 0,
-    articles:[]
+    articles:[],
+    page:1,
+    size:10
   },
 
   /**
@@ -29,9 +32,11 @@ Page({
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
       },
-      url: 'https://www.mymiwo.club/springmvc/article/getTakeArticle.do',
+      url: host.Url+'/springmvc/article/getTakeArticle.do',
       data: {
-        type:mitype
+        type:mitype,
+        page:that.data.page,
+        size:that.data.size
       },
       method: "POST",
       success: function (res) {
@@ -45,7 +50,8 @@ Page({
   },
   listenerPickerSelected:function(e){
     this.setData({
-      index: e.detail.value
+      index: e.detail.value,
+      page:1
     });
     this.loadArticle(this.data.array[this.data.index]);
   },
@@ -86,14 +92,43 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-  
+    this.setData({
+      page: 1
+    });
+    this.loadArticle(this.data.array[this.data.index]);
+    wx.stopPullDownRefresh();
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-  
+    var that = this;
+    var mitype = this.data.array[this.data.index]
+    if (mitype == '所有类型')
+      mitype = '';
+    wx.request({
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      url: host.Url + '/springmvc/article/getTakeArticle.do',
+      data: {
+        type: mitype,
+        page: that.data.page+1,
+        size: that.data.size
+      },
+      method: "POST",
+      success: function (res) {
+        if (res.statusCode == 200 && res.data.result == 'success') {
+          var art=that.data.articles;
+          art.concat(res.data.data)
+          that.setData({
+            articles: art,
+            page:that.data.page+1
+          })
+        }
+      }
+    })
   },
 
   /**

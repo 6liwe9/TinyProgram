@@ -1,5 +1,6 @@
 // pages/mIndex/mIndex.js
 var content_data = require('../template/tabbar/tabbar.js')
+var host = require('../../utils/host.js')
 Page({
 
   /**
@@ -23,7 +24,7 @@ Page({
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
       },
-      url: 'https://www.mymiwo.club/springmvc/mipic/getYesterdayPics.do',
+      url: host.Url+'/springmvc/mipic/getYesterdayPics.do',
       data: {
         page: that.data.page,
         size: 10
@@ -42,7 +43,7 @@ Page({
   getAnnounce:function(){
     var that = this;
     wx.request({
-      url: 'https://www.mymiwo.club/springmvc/article/getAnnounce.do',
+      url: host.Url+'/springmvc/article/getAnnounce.do',
       method: "GET",
       success: function (res) {
         if (res.statusCode == 200 && res.data.result == 'success') {
@@ -84,7 +85,30 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-  
+    var that = this;
+    that.setData({
+      page:1
+    })
+    wx.request({
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      url: host.Url + '/springmvc/mipic/getYesterdayPics.do',
+      data: {
+        page: that.data.page,
+        size: 10
+      },
+      method: "POST",
+      success: function (res) {
+        wx.stopPullDownRefresh()
+        if (res.statusCode == 200 && res.data.result == 'success') {
+          that.setData({
+            picArr: res.data.data,
+            page: that.data.page + 1
+          })
+        }
+      }
+    })
   },
 
   /**
@@ -97,9 +121,8 @@ Page({
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
       },
-      url: 'https://www.mymiwo.club/springmvc/mipic/getYesterdayPics.do',
+      url: host.Url+'/springmvc/mipic/getYesterdayPics.do',
       data: {
-        type: that.data.array[that.data.index],
         page: that.data.page,
         size: 10
       },
@@ -115,7 +138,18 @@ Page({
       }
     })
   },
-
+  viewPics: function (e) {
+    wx.previewImage({
+      current: e.target.dataset.pic,
+      urls: [e.target.dataset.pic],
+      fail: function () {
+        console.log('fail')
+      },
+      complete: function () {
+        console.info("点击图片了");
+      }
+    })
+  },
   /**
    * 用户点击右上角分享
    */

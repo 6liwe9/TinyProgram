@@ -1,4 +1,5 @@
 // pages/article/article.js
+var host = require('../../utils/host.js')
 Page({
 
   /**
@@ -16,7 +17,7 @@ Page({
   onLoad: function (options) {
       var that=this;
       var articleId = options.articleId;
-      var toUrl ='https://www.mymiwo.club/springmvc/article/getArticle.do?articleId='+articleId;
+      var toUrl =host.Url+'/springmvc/article/getArticle.do?articleId='+articleId;
       wx.request({
         url: toUrl,
         method: "GET",

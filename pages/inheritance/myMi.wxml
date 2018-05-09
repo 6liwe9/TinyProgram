@@ -12,12 +12,12 @@
     </view> 
     <view class="btnClass{{showViewF?'':'NotSeen'}}">
       <block wx:for="{{typeData}}" wx:for-index="index" wx:for-item="item">
-        <button bindtap='setTypeF' class='btn' data-type='{{item}}'> {{item}}   </button>
+        <view bindtap='setTypeF' class='btn' data-type='{{item}}'> {{item}}   </view>
       </block>   
     </view>
     <view class="btnClass{{showViewM?'':'NotSeen'}}">
       <block wx:for="{{typeData}}" wx:for-index="index" wx:for-item="item" >
-        <button bindtap='setTypeM' class='btn' data-type='{{item}}'> {{item}}</button>
+        <view bindtap='setTypeM' class='btn' data-type='{{item}}'> {{item}}</view>
       </block>   
     </view>
   </view>
@@ -28,7 +28,7 @@
       <text>子</text>
     </view> 
 <view class='group'>
-<checkbox-group bindchange="listenCheckboxChange" style="display:flex;">
+<checkbox-group bindchange="listenCheckboxChange" style="display:flex;flex-wrap: wrap;">
 <!--这里用label显示内容，for循环写法 wx:for-items 默认item为每一项-->
     <label   wx:for="{{typeData}}" wx:for-index="index" wx:for-item="item" >
     <!--value值和默认选中状态都是通过数据绑定在js中的-->

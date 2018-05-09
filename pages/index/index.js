@@ -1,7 +1,7 @@
 //index.js
 //获取应用实例
 const app = getApp()
-
+var host = require('../../utils/host.js')
 Page({
   data: {
     motto: 'Hello World',
@@ -15,39 +15,32 @@ Page({
   //事件处理函数
   bindViewTap: function() {
     this.setData({ isBtn: false});
-    var that=app;
+    var that=this;
     wx.request({
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
       }, 
-      url: 'https://www.mymiwo.club/springmvc/user/user_login.do',
+      url: host.Url+'/springmvc/user/user_login.do',
       data: {
-        openId: that.globalData.openid,
-        nickname: that.globalData.userInfo.nickName,
-        avatarUrl: that.globalData.userInfo.avatarUrl
+        openId: app.globalData.openid,
+        nickname: app.globalData.userInfo.nickName,
+        avatarUrl: app.globalData.userInfo.avatarUrl
       },
       method: "POST",
       success: function (res) {
         if (res.statusCode==200&&res.data.result =='success'){
-          that.globalData.userId = res.data.data;
-          console.log(that.globalData.userId);
+          app.globalData.userId = res.data.data;
+          console.log(app.globalData.userId);
+          if (app.globalData.userId != null)
+            that.addAnimation();
         }
       }
     })
-    this.addAnimation();
+   
   },
   onLoad: function () {
     var p = this;
-   // wx.request({
-    //  url: 'https://www.mymiwo.club/springmvc/hello/wx_cover.do', 
-     // data: {
-     // },
-     // method: "GET",
-     // success: function (res) {
-        p.setData({ imageUrl: 'https://www.mymiwo.club/wximages/cover/cover.jpg'});
-      //  console.log(res.data)
-     // }
-   // })
+    p.setData({ imageUrl: host.Url+'/wximages/cover/cover.jpg'});
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,

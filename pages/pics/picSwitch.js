@@ -1,5 +1,6 @@
 // pages/pics/picSwitch.js
 var content_data = require('../inheritance/type.js')
+var host = require('../../utils/host.js')
 Page({
 
   /**
@@ -28,7 +29,7 @@ Page({
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
       },
-      url: 'https://www.mymiwo.club/springmvc/mipic/getRandomPics.do',
+      url: host.Url+'/springmvc/mipic/getRandomPics.do',
       data: {
         type: mtype,
         cnt:7
@@ -79,7 +80,7 @@ Page({
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
       },
-      url: 'https://www.mymiwo.club/springmvc/mipic/getRandomPics.do',
+      url: host.Url+'/springmvc/mipic/getRandomPics.do',
       data: {
         type: mtype,
         cnt: 7
@@ -108,21 +109,19 @@ Page({
       dir="right";
     var pos=this.data.picPos; 
     var pic = this.data.picArr[pos];
-    var mlike=that.data.like;
-    var mhate=that.data.hate;
+    var mlike;
     if(dir=="right")
-      mlike+=1;
+      mlike=true;
     else
-      mhate+=1;
+      mlike=false;
     wx.request({
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
       },
-      url: 'https://www.mymiwo.club/springmvc/mipic/valueMiPic.do',
+      url: host.Url+'/springmvc/mipic/valueMiPic.do',
       data: {
         picId: pic.picId,
-        like:mlike,
-        hate:mhate
+        like:mlike
       },
       method: "POST"
     })

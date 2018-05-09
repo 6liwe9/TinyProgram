@@ -1,5 +1,6 @@
 // pages/takeaway/addmine.js
 var content_data = require('../inheritance/type.js')
+var host = require('../../utils/host.js')
 const app = getApp()
 Page({
 
@@ -36,6 +37,27 @@ Page({
     this.setData({
       arr: typearray
     })
+    this.getPicsCnt();
+  },
+  getPicsCnt: function () {
+    var that = this;
+    wx.request({
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      url: host.Url + '/springmvc/mipic/getPicsByUser.do',
+      data: {
+        userId: app.globalData.userId
+      },
+      method: "POST",
+      success: function (res) {
+        if (res.statusCode == 200 && res.data.result == 'success') {
+          that.setData({
+            picCnt: res.data.data.length
+          })
+        }
+      }
+    })
   },
   listenerPickerSelected: function (e) {
     this.setData({
@@ -62,12 +84,15 @@ Page({
     if(this.data.index==0){
       this.showError('请选择小蜜类型');
     }else
+    if(this.data.picCnt>30){
+      this.showError('初级阶段，每人只能上传30张照片！');
+    }else
       this.savePic();
   },
   savePic:function(){
     var that = this;
     wx.uploadFile({
-      url: 'https://www.mymiwo.club/springmvc/pic/uploadPic.do', //
+      url: host.Url+'/springmvc/pic/uploadPic.do', //
       filePath: that.data.pics[that.data.picIndex],
       name: 'pic',
       header: {
@@ -100,7 +125,7 @@ Page({
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
       },
-      url: 'https://www.mymiwo.club/springmvc/mipic/savePic.do',
+      url: host.Url+'/springmvc/mipic/savePic.do',
       data: {
         type: that.data.arr[that.data.index],
         userId: app.globalData.userId,

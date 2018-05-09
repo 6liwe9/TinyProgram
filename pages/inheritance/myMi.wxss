@@ -38,8 +38,10 @@ page{
   padding: 10rpx;
 }
 .btn{
-  margin: 5rpx;
-
+  margin: 10rpx;
+  border-radius: 30rpx;
+  background-color: white;
+  padding: 10rpx;
 }
 .btnClass{
   display: flex;

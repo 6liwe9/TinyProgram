@@ -1,5 +1,6 @@
 // pages/mine/mine.js
 const app = getApp()
+var host = require('../../utils/host.js')
 Page({
 
   /**
@@ -20,7 +21,7 @@ Page({
       userId:uId
     })
     wx.request({
-      url: 'https://www.mymiwo.club/springmvc/user/user_get.do?userId=' + uId,
+      url: host.Url+'/springmvc/user/user_get.do?userId=' + uId,
       method: "GET",
       success: function (res) {
         if (res.statusCode == 200 && res.data.result == 'success') {
@@ -39,7 +40,7 @@ Page({
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
       },
-      url: 'https://www.mymiwo.club/springmvc/mipic/getPicsByUser.do',
+      url: host.Url + '/springmvc/mipic/getPicsByUser.do',
       data: {
         userId: that.data.userId
       },
@@ -59,7 +60,7 @@ Page({
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
       },
-      url: 'https://www.mymiwo.club/springmvc/article/getTakeArticle.do',
+      url: host.Url+'/springmvc/article/getTakeArticle.do',
       data: {
         userId: that.data.userId
       },

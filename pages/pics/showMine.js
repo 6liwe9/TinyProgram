@@ -1,5 +1,6 @@
 // pages/pics/showMine.js
 const app = getApp()
+var host = require('../../utils/host.js')
 Page({
 
   /**
@@ -42,7 +43,7 @@ Page({
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
       },
-      url: 'https://www.mymiwo.club/springmvc/mipic/getPicsByUser.do',
+      url: host.Url+'/springmvc/mipic/getPicsByUser.do',
       data: {
         userId: muserId
       },
@@ -63,7 +64,7 @@ Page({
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
       },
-      url: 'https://www.mymiwo.club/springmvc/mipic/delPics.do',
+      url: host.Url+'/springmvc/mipic/delPics.do',
       data: {
         picId: aid
       },

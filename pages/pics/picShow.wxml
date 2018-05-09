@@ -9,12 +9,12 @@
   </picker>
 </view>
 <scroll-view scroll-y="true">
-<block  wx:for="{{picArr}}" wx:for-item="pic">
+<block  wx:for="{{picArr}}" wx:for-item="pic" for-index="index">
 <view class='picClass'>
    <image src="{{pic.url}}" bindtap='viewPic' class="slide-image" mode="aspectFill" data-pic='{{pic.url}}'/>   
     <view class='user'>
     <view class='wrap'>
-    <image src="../icons/thumbs-o-down.png" class="userimage"/>
+    <image src="../icons/thumbs-o-down.png" class="userimage" bindtap='valueHate' data-index='{{index}}'/>
     {{pic.hate}}
     </view>
       <navigator url="../other/mine?userId={{pic.userId}}" class='navi'>
@@ -23,7 +23,7 @@
         </navigator>
          <view class='wrap'>
         {{pic.like}}
-        <image src="../icons/thumbs-o-up.png" class="userimage"/>
+        <image src="../icons/thumbs-o-up.png" class="userimage" bindtap='valueLike' data-index='{{index}}'/>
      </view>
     </view>
 </view>

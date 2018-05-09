@@ -1,4 +1,5 @@
 // pages/buy/buy.js
+var host = require('../../utils/host.js')
 Page({
 
   /**
@@ -15,7 +16,7 @@ Page({
   onLoad: function (options) {
     var that = this;
     wx.request({
-      url: 'https://www.mymiwo.club/springmvc/article/getSaleArticle.do',
+      url: host.Url+'/springmvc/article/getSaleArticle.do',
       method: "GET",
       success: function (res) {
         if (res.statusCode == 200 && res.data.result == 'success') {

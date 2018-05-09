@@ -27,7 +27,7 @@
 <scroll-view scroll-y="true">
 <block  wx:for="{{picArr}}" wx:for-item="pic">
 <view class='picClass'>
-   <image src="{{pic.url}}" class="slide-image" mode="aspectFill"/>   
+   <image src="{{pic.url}}"  bindtap='viewPics' class="slide-image" mode="aspectFill" data-pic='{{pic.url}}'/>   
     <view class='user'>
   
       <navigator url="../other/mine?userId={{pic.userId}}" class='navi'>

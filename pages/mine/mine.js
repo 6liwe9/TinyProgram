@@ -1,5 +1,6 @@
 // pages/mine/mine.js
 const app = getApp()
+var host = require('../../utils/host.js')
 Page({
 
   /**
@@ -31,7 +32,7 @@ Page({
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
       },
-      url: 'https://www.mymiwo.club/springmvc/mipic/getPicsByUser.do',
+      url: host.Url+'/springmvc/mipic/getPicsByUser.do',
       data: {
         userId: muserId
       },
@@ -51,7 +52,7 @@ Page({
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
       },
-      url: 'https://www.mymiwo.club/springmvc/article/getTakeArticle.do',
+      url: host.Url+'/springmvc/article/getTakeArticle.do',
       data: {
         userId: app.globalData.userId
       },
@@ -84,7 +85,7 @@ Page({
     var aid=e.target.dataset.aid;
     var that = this;
     wx.request({
-      url: 'https://www.mymiwo.club/springmvc/article/delTakeArticle.do?articleId='+aid,
+      url: host.Url+'/springmvc/article/delTakeArticle.do?articleId='+aid,
       method: "GET",
       success: function (res) {
         if (res.statusCode == 200 && res.data.result == 'success') {

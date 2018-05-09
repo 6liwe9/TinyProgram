@@ -1,6 +1,7 @@
 // pages/inheritance/inheritance.js
 var content_data = require('./type.js')
 var content_data2 = require('../template/tabbar/tabbar.js')
+var host = require('../../utils/host.js')
 Page({
 
   /**
@@ -24,7 +25,7 @@ Page({
     barData: content_data2.tabBarData});
     var p = this;
     wx.request({
-      url: 'https://www.mymiwo.club/springmvc/inherit/inherit_cnt.do',
+      url: host.Url+'/springmvc/inherit/inherit_cnt.do',
       data: {
       },
       method: "GET",
@@ -91,7 +92,7 @@ Page({
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
       },
-      url: 'https://www.mymiwo.club/springmvc/inherit/inherit_calculate.do',
+      url: host.Url+'/springmvc/inherit/inherit_calculate.do',
       data: {
         fatherType: that.data.fatherText,
         motherType: that.data.motherText,

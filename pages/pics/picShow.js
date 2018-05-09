@@ -1,5 +1,6 @@
 // pages/pics/picShow.js
 var content_data = require('../inheritance/type.js')
+var host = require('../../utils/host.js')
 Page({
 
   /**
@@ -26,7 +27,7 @@ Page({
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
       },
-      url: 'https://www.mymiwo.club/springmvc/mipic/getPics.do',
+      url: host.Url+'/springmvc/mipic/getPics.do',
       data: {
         type: that.data.array[that.data.index],
         page:that.data.page,
@@ -35,8 +36,11 @@ Page({
       method: "POST",
       success: function (res) {
         if (res.statusCode == 200 && res.data.result == 'success') {
+          var arr = res.data.data;
+          for(var i=0;i<arr.length;i++)
+            arr[i].click=false;
           that.setData({
-            picArr: res.data.data,
+            picArr: arr,
             page:that.data.page+1
           })
         }
@@ -55,11 +59,50 @@ Page({
       }
     })
   },
+  valueHate:function(e){
+    var index=e.target.dataset.index;
+    var pArr = this.data.picArr;
+    var pic=pArr[index];
+    if(!pic.click){
+      pic.click=true;
+      pic.hate+=1;
+      this.valuePic(pic.picId,false)
+    }
+    this.setData({
+      picArr:pArr
+    })
+  },
+  valueLike: function (e) {
+    var index = e.target.dataset.index;
+    var pArr = this.data.picArr;
+    var pic = pArr[index];
+    if (!pic.click) {
+      pic.click = true;
+      pic.like += 1;
+      this.valuePic(pic.picId, true)
+    }
+    this.setData({
+      picArr: pArr
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
   
+  },
+  valuePic:function(id,like){
+    wx.request({
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      url: host.Url + '/springmvc/mipic/valueMiPic.do',
+      data: {
+        picId: id,
+        like: like
+      },
+      method: "POST"
+    })
   },
   onReachBottom: function () {
     var pics=this.data.picArr;
@@ -68,7 +111,7 @@ Page({
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
       },
-      url: 'https://www.mymiwo.club/springmvc/mipic/getPics.do',
+      url: host.Url+'/springmvc/mipic/getPics.do',
       data: {
         type: that.data.array[that.data.index],
         page: that.data.page,
@@ -77,7 +120,10 @@ Page({
       method: "POST",
       success: function (res) {
         if (res.statusCode == 200 && res.data.result == 'success') {
-          pics.concat(res.data.data)
+          var arr = res.data.data;
+          for (var i = 0; i < arr.length; i++)
+            arr[i].click= false;
+          pics.concat(arr)
           that.setData({
             picArr: pics,
             page: that.data.page + 1
@@ -102,7 +148,7 @@ Page({
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
       },
-      url: 'https://www.mymiwo.club/springmvc/mipic/getPics.do',
+      url: host.Url+'/springmvc/mipic/getPics.do',
       data: {
         type: that.data.array[that.data.index],
         page: that.data.page,
@@ -111,8 +157,11 @@ Page({
       method: "POST",
       success: function (res) {
         if (res.statusCode == 200 && res.data.result == 'success') {
+          var arr = res.data.data;
+          for (var i = 0; i < arr.length; i++)
+            arr[i].click = false;
           that.setData({
-            picArr: res.data.data,
+            picArr: arr,
             page: that.data.page + 1
           })
         }
@@ -137,7 +186,34 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    console.log(113)
+    var that = this;
+    this.setData({
+      page:1
+    })
+    wx.request({
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      url: host.Url + '/springmvc/mipic/getPics.do',
+      data: {
+        type: that.data.array[that.data.index],
+        page: that.data.page,
+        size: 10
+      },
+      method: "POST",
+      success: function (res) {
+        if (res.statusCode == 200 && res.data.result == 'success') {
+          wx.stopPullDownRefresh();
+          var arr = res.data.data;
+          for (var i = 0; i < arr.length; i++)
+            arr[i].click = false;
+          that.setData({
+            picArr: arr,
+            page: that.data.page + 1
+          })
+        }
+      }
+    })
   },
 
   /**

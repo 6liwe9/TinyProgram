@@ -1,5 +1,6 @@
 // pages/inheritance/myMi.js
 var content_data = require('./type.js')
+var host = require('../../utils/host.js')
 var content_data2 = require('../template/tabbar/tabbar.js')
 const app = getApp()
 Page({
@@ -65,7 +66,7 @@ Page({
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
       },
-      url: 'https://www.mymiwo.club/springmvc/inherit/inherit_add.do',
+      url: host.Url+'/springmvc/inherit/inherit_add.do',
       data: {
         fatherType: that.data.fatherText,
         motherType: that.data.motherText,

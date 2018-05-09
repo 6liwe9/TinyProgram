@@ -1,5 +1,6 @@
 // pages/mine/advice.js
 const app = getApp()
+var host = require('../../utils/host.js')
 Page({
 
   /**
@@ -47,7 +48,7 @@ Page({
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
       },
-      url: 'https://www.mymiwo.club/springmvc/advice/addAdvice.do',
+      url: host.Url+'/springmvc/advice/addAdvice.do',
       data: {
         userId: app.globalData.userId,
         adviceContent:that.data.content

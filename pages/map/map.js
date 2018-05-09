@@ -1,5 +1,6 @@
 // pages/map/map.js
 const app = getApp()
+var host = require('../../utils/host.js')
 Page({
 
   /**
@@ -22,7 +23,7 @@ Page({
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
       },
-      url: 'https://www.mymiwo.club/springmvc/map/addUserPosition.do',
+      url: host.Url+'/springmvc/map/addUserPosition.do',
       data: {
         userId: app.globalData.userId,
         latitude: that.data.latitude,
