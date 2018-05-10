@@ -43,10 +43,6 @@ Page({
         })
         var p1 = p.data.picArr[0];
         var p2 = p.data.picArr[1];
-        that.setData({
-          like:p1.like,
-          hate:p1.hate
-        })
         var now=p.data.curr;
         if (now == 0)
           p.setData({
@@ -67,8 +63,9 @@ Page({
             pic2: p2
           });
         p.setData({
-          picPos: 2,
-          curr: 0
+          picPos: 1,
+          curr: 0,
+          picNow:p1
         })
         }
       }
@@ -88,8 +85,7 @@ Page({
       method: "POST",
       success: function (res) {
         p.setData({
-          picArr: res.data.data,
-          picPos: 0 
+          picArr: res.data.data
         });
       }
     })
@@ -107,8 +103,6 @@ Page({
       dir="left";
     if(now -pre==2)
       dir="right";
-    var pos=this.data.picPos; 
-    var pic = this.data.picArr[pos];
     var mlike;
     if(dir=="right")
       mlike=true;
@@ -120,20 +114,23 @@ Page({
       },
       url: host.Url+'/springmvc/mipic/valueMiPic.do',
       data: {
-        picId: pic.picId,
+        picId: that.data.picNow.picId,
         like:mlike
       },
       method: "POST"
     })
-    if(pos==6){
+    var pos = this.data.picPos; 
+    var pic = this.data.picArr[pos];
+    this.setData({ curr:now,picNow:pic});
+    if (pos == 6) {
       this.getImages('所有类型');
-      pos=0;
-    }else{
-      pos+=1;
+      pos = 0;
+    } else {
+      pos += 1;
     }
-    pic = this.data.picArr[pos];
     var p=this;
-    this.setData({ picPos: pos, curr:now,like:pic.like,hate:pic.hate});
+    pic = this.data.picArr[pos];
+    this.setData({picPos:pos})
     setTimeout(function () {
       if (now == 0)
         p.setData({

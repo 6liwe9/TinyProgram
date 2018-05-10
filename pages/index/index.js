@@ -14,30 +14,41 @@ Page({
   },
   //事件处理函数
   bindViewTap: function() {
-    this.setData({ isBtn: false});
     var that=this;
+   
+    if (app.globalData.userId!=null) {
+      that.addAnimation();
+      that.update();
+      this.setData({ isBtn: false });
+    }else{
+      wx.showToast({
+        title: '登录失败',
+      })
+    }
+  },
+  update: function () {
+    var that = this;
     wx.request({
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
-      }, 
-      url: host.Url+'/springmvc/user/user_login.do',
+      },
+      url: host.Url + '/springmvc/user/user_update.do',
       data: {
-        openId: app.globalData.openid,
+        userId: app.globalData.userId,
         nickname: app.globalData.userInfo.nickName,
         avatarUrl: app.globalData.userInfo.avatarUrl
       },
       method: "POST",
       success: function (res) {
-        if (res.statusCode==200&&res.data.result =='success'){
-          app.globalData.userId = res.data.data;
-          console.log(app.globalData.userId);
-          if (app.globalData.userId != null)
-            that.addAnimation();
+        if (!(res.statusCode == 200 && res.data.result == 'success')) {
+          wx.showToast({
+            title: '更新用户信息失败' ,
+            duration: 2000
+          })
         }
       }
     })
-   
-  },
+  },  
   onLoad: function () {
     var p = this;
     p.setData({ imageUrl: host.Url+'/wximages/cover/cover.jpg'});
@@ -76,6 +87,7 @@ Page({
       hasUserInfo: true
     })
   },
+  
   addAnimation: function () {
     var animation = wx.createAnimation({
       duration: 1000,

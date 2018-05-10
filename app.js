@@ -1,4 +1,5 @@
 //app.js
+var host = require('./utils/host.js')
 App({
 
   data: {
@@ -10,7 +11,7 @@ App({
     if (code) {
       //发起网络请求
       wx.request({
-        url: 'https://api.weixin.qq.com/sns/jscode2session',
+        url: host.Url +'/springmvc/user/code2id.do',
         data: {
           js_code: code,
           appid: that.data.appid,
@@ -18,10 +19,17 @@ App({
           grant_type: 'authorization_code'
         },
         success: function (result) {
-          if (result.data.openid != null)
-            that.globalData.openid = result.data.openid; //获取openid 
-          else
-            that.getOpenid(code)
+          if (result.statusCode == 200 && result.data.result == 'success')
+          {   that.globalData.openid = result.data.data; //获取openid 
+             that.login();
+          }
+          else{
+            wx.showToast({
+              title: '登录失败' + that.globalData.openid,
+              duration: 3000
+            })
+          }
+            
         }
       })
     } else {
@@ -29,6 +37,29 @@ App({
     }
   }
   ,
+  login: function () {
+    var that = this;
+    wx.request({
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      url: host.Url + '/springmvc/user/user_login.do',
+      data: {
+        openId: that.globalData.openid
+      },
+      method: "POST",
+      success: function (res) {
+        if (res.statusCode == 200 && res.data.result == 'success') {
+          that.globalData.userId = res.data.data;
+        } else {
+          wx.showToast({
+            title: '登录失败' + that.globalData.openid,
+            duration: 3000
+          })
+        }
+      }
+    })
+  },
   onLaunch: function () {
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []

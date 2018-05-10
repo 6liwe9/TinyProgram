@@ -14,11 +14,12 @@
     <view class='thumb'>
       <view class ='cover'>
         <image animation="{{animate1}}" src='../icons/thumbs-o-down.png' style='height:100rpx;width:100rpx'></image>
-        <text class='number'>{{hate}}</text>
+        <text class='number'>{{picNow.hate}}</text>
       </view>
       <view class='cover'>
         <image animation="{{animate2}}" src='../icons/thumbs-o-up.png' style='height:100rpx;width:100rpx'></image>
-        <text class='number'>{{like}}</text>
+        <text class='number'>{{picNow.like}}</text>
       </view>
   </view>
 </view>
+<view class='textcls'>《=左滑不喜欢☺右滑喜欢=》</view>
